@@ -30,16 +30,20 @@ public class Pessoa {
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
+
+    @Column(name = "senha")
+    private String senha;
     
     //colocar uma classe cartão
     //criar um objeto endereço
 
-    public Pessoa(Long id, String nome, String telefone, String email, LocalDate dataNascimento) {
+    public Pessoa(Long id, String nome, String telefone, String email, LocalDate dataNascimento, String senha) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.dataNascimento = dataNascimento;
+        this.senha = senha;
     }
 
     public Pessoa() {}
@@ -82,6 +86,14 @@ public class Pessoa {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
     
 }

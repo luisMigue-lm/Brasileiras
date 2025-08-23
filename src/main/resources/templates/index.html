@@ -10,9 +10,19 @@
 
 <body>
     <header>
-        
-        <img src="/img/brasileiras-logo.png" alt="Brasileiras - logotipo">
 
+
+        <div th:if="${cliente == null}">
+            <a href="/login">login</a>
+            <a href="/cadastro">cadastro</a>
+        </div>
+
+        <!-- Mostrar saudação se cliente estiver logado -->
+        <div th:if="${cliente != null}">
+            <span>Bem-vindo(a), <span th:text="${cliente.nome}">Usuário</span>!</span>
+            <a href="/logout">Sair</a>
+        </div>
+        <img src="/img/brasileiras-logo.png" alt="Brasileiras - logotipo">
 
         <nav>
 
