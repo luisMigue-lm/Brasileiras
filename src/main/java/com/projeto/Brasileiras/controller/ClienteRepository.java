@@ -1,4 +1,4 @@
-package com.projeto.Brasileiras.Controller;
+package com.projeto.Brasileiras.controller;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,21 +10,22 @@ import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 
 @Repository
-public class BrasileirasRepository {
+public class ClienteRepository {
 
     @PersistenceContext
     private EntityManager em;
 
     @Transactional
     public void save(Cliente cliente) {
-        String sql = "INSERT INTO brasileirasdb (nome ,email, telefone, dataNascimento, senha) VALUES (:nome, :email, :telefone, :dataNascimento, :senha)";
-
+        String sql = "INSERT INTO pessoas (nome ,email, telefone, dt_nascimento, senha, cpf) VALUES (:nome, :email, :telefone, :dtNascimento, :senha, :cpf)";
+        
         Query query = em.createNativeQuery(sql);
         query.setParameter("nome", cliente.getNome());
-        query.setParameter("email", cliente.getEmail());
         query.setParameter("telefone", cliente.getTelefone());
-        query.setParameter("dataNascimento", cliente.getDataNascimento());
+        query.setParameter("email", cliente.getEmail());
         query.setParameter("senha", cliente.getSenha());
+        query.setParameter("cpf", cliente.getCpf());
+        query.setParameter("dtNascimento", cliente.getDtNascimento());
         query.executeUpdate();
     }
 

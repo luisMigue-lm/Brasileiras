@@ -3,15 +3,22 @@ package com.projeto.Brasileiras.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "pessoas")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "dtype", discriminatorType = DiscriminatorType.STRING)
+@Data
 public class Pessoa {
 
     @Id
@@ -19,34 +26,36 @@ public class Pessoa {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "telefone")
-    private String telefone;  
+    @Column(name = "telefone", nullable = false, length = 20)
+    private String telefone;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "data_nascimento")
-    private LocalDate dataNascimento;
-
-    @Column(name = "senha")
+    @Column(name = "senha", nullable = false, length = 100)
     private String senha;
-    
-    //colocar uma classe cartão
-    //criar um objeto endereço
 
-    public Pessoa(Long id, String nome, String telefone, String email, LocalDate dataNascimento, String senha) {
+    @Column(name = "cpf", unique = true, nullable = false, length = 14)
+    private String cpf;
+
+    @Column(name = "dt_nascimento", nullable = false)
+    private LocalDate dtNascimento;
+
+    public Pessoa(Long id, String nome, String telefone, String email, String senha, String cpf, LocalDate dtNascimento, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.dataNascimento = dataNascimento;
         this.senha = senha;
+        this.cpf = cpf;
+        this.dtNascimento = dtNascimento;
     }
 
-    public Pessoa() {}
+    public Pessoa() {
+    }
 
     public Long getId() {
         return id;
@@ -80,14 +89,6 @@ public class Pessoa {
         this.email = email;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -95,5 +96,21 @@ public class Pessoa {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public LocalDate getDtNascimento() {
+        return dtNascimento;
+    }
+
+    public void setDtNascimento(LocalDate dtNascimento) {
+        this.dtNascimento = dtNascimento;
+    }
+
 }

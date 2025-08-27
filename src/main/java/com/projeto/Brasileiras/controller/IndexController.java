@@ -1,4 +1,4 @@
-package com.projeto.Brasileiras.Controller;
+package com.projeto.Brasileiras.controller;
 
 import java.time.LocalDate;
 
@@ -12,15 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.projeto.Brasileiras.model.Cliente;
 
 @Controller
-public class BrasileirasController {
+public class IndexController {
 
     @Autowired
-    private BrasileirasRepository brasileirasRepository;
-
-    @GetMapping("/brasileras")
-    public String brasileras() {
-        return "index.html";
-    }
+    private ClienteRepository brasileirasRepository;
 
     @GetMapping("/cadastro")
     public String cadastro() {
@@ -29,14 +24,15 @@ public class BrasileirasController {
 
     @PostMapping("/fazerCadastro")
     public String fazerlogin(@RequestParam String nome, @RequestParam String email, @RequestParam String telefone,
-            @RequestParam LocalDate dataNascimento, @RequestParam String senha) {
+            @RequestParam LocalDate dtNascimento, @RequestParam String senha, @RequestParam String cpf) {
 
         Cliente cliente = new Cliente();
         cliente.setNome(nome);
         cliente.setEmail(email);
         cliente.setTelefone(telefone);
-        cliente.setDataNascimento(dataNascimento);
+        cliente.setDtNascimento(dtNascimento);
         cliente.setSenha(senha);
+        cliente.setCpf(cpf);
 
         brasileirasRepository.save(cliente);
 
