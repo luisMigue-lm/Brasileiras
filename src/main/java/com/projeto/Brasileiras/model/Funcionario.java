@@ -23,23 +23,28 @@ public class Funcionario extends Pessoa{
 
     @Column(name = "cargo", nullable = false)
     private String cargo;
-
+    
     @Column(name = "departamento", nullable = false)
     private String departamento;
-
+    
+    @Column(name = "matricula", nullable = false)
+    private String matricula;
 
     public Funcionario(Long id, String nome, String telefone, String email, String senha, String cpf,
-            LocalDate dtNascimento, Endereco endereco, double salario, String cargo, String departamento) {
+            LocalDate dtNascimento, Endereco endereco, double salario, String cargo, String departamento,
+            String matricula) {
         super(id, nome, telefone, email, senha, cpf, dtNascimento, endereco);
         this.salario = salario;
         this.cargo = cargo;
         this.departamento = departamento;
+        this.matricula = matricula;
     }
 
-    public Funcionario(double salario, String cargo, String departamento) {
+    public Funcionario(double salario, String cargo, String departamento, String matricula) {
         this.salario = salario;
         this.cargo = cargo;
         this.departamento = departamento;
+        this.matricula = matricula;
     }
 
     public Funcionario() {}
@@ -66,6 +71,14 @@ public class Funcionario extends Pessoa{
 
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
     
 

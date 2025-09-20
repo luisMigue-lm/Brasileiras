@@ -4,29 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index-style.css">
     <title>Brasileiras | Bem-vindo(a)</title>
 </head>
 
 <body>
-    <header>
+    <header class="header-nav">
 
+        <nav class="navegacao">
+            <img src="/img/logo/brasileiras-logo4.png" alt="Brasileiras - logotipo" id="logo-tipo">
 
-        <div th:if="${cliente == null}">
-            <a href="/login">login</a>
-            <a href="/cadastro">cadastro</a>
-        </div>
+            <div class="barra-pesquisa">
+                <form method="post" action="">
+                    <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
 
-        <!-- Mostrar saudação se cliente estiver logado -->
-        <div th:if="${cliente != null}">
-            <span>Bem-vindo(a), <span th:text="${cliente.nome}">Usuário</span>!</span>
-            <a href="/logout">Sair</a>
-        </div>
-        <img src="/img/brasileiras-logo.png" alt="Brasileiras - logotipo">
+                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa"></button>
+                </form>
+            </div>
 
-        <nav>
-
+            <div class="campo-usuario">
+                <a href="">
+                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="icon-loclz"
+                    <p>Crie sua conta</p>
+                </a>
+                <a href="">
+                    <p>Entre</p>
+                </a>
+            </div>
+            <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+            
         </nav>
+
+        <div class="menu-opcoes">
+            <div class="endereco">
+                <a href="">
+                    <img src="/img/icons/local.svg" alt="ponto de localização">
+                    
+                        <p>Informe o seu CEP</p>    
+
+                </a>
+            </div>
+            <ul>
+                <li>
+                    <a href="">Laticinios</a>
+                </li>
+                <li>
+                    <a href="">Vegetais</a>
+                </li>
+                <li>
+                    <a href="">Tubercúlos</a>
+                </li>
+                <li>
+                    <a href="">Artesanatos</a>
+                </li>
+                <li>
+                    <a href="">Sobre nós</a>
+                </li>
+            </ul>
+        </div>
+
     </header>
 
     <section>

@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+}
+
+.header-nav {
+    background-color: #ffe109;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 0% 5%;
+    border-radius: 8px;
+    width: 75%;
+}
+
+#logo-tipo {
+    width: 20vw;
+}
+
+.barra-pesquisa {
+    display: flex;
+    width: 35vw;
+    height: 5vh;
+}
+
+.barra-pesquisa form {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #FFFFFF;
+    width: 100%;
+}
+
+.barra-pesquisa input[type="text"] {
+    border: none;            
+    outline: none;           
+    padding: 12px 15px;
+    font-size: 1rem;
+    flex: 1;       
+    min-width: 0;  
+}
+
+.barra-pesquisa button {
+    border: none;
+    background: #FFFFFF;     
+    padding: 0 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.barra-pesquisa button img {
+    width: 1.5vw;            
+    height: 5vh;
+}
+
+
+.campo-usuario {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15%;
+}
+
+.campo-usuario a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #000000E3;
+}
+
+.campo-usuario a:hover {
+    color: #009b3a;
+}
+
+#carrinho {
+    width: 2.5vw;
+}
+
+#icon-loclz {
+    width: 2.5vw;
+}
+
+
+.endereco a {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.endereco img {
+    width: 2vw;
+}
+
+.menu-opcoes {
+    font-size: 1rem;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.menu-opcoes ul {
+    display: flex;
+    gap: 5vw;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-opcoes li {
+    list-style: none;
+}
+
+.menu-opcoes a {
+    color: #000000E3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu-opcoes a:hover {
+    color: #009b3a;
+}
+
