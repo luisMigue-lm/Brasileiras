@@ -31,9 +31,9 @@ public class Funcionario extends Pessoa{
     private String matricula;
 
     public Funcionario(Long id, String nome, String telefone, String email, String senha, String cpf,
-            LocalDate dtNascimento, Endereco endereco, double salario, String cargo, String departamento,
+            LocalDate dtNascimento, Endereco endereco, String enderecoFoto, double salario, String cargo, String departamento,
             String matricula) {
-        super(id, nome, telefone, email, senha, cpf, dtNascimento, endereco);
+        super(id, nome, telefone, email, senha, cpf, dtNascimento, endereco, enderecoFoto);
         this.salario = salario;
         this.cargo = cargo;
         this.departamento = departamento;

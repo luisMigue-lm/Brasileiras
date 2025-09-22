@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projeto.Brasileiras.model.Cliente;
+import com.projeto.Brasileiras.repository.ClienteRepository;
 
 @Controller
 public class IndexController {
@@ -36,7 +37,7 @@ public class IndexController {
 
         brasileirasRepository.save(cliente);
 
-        return "redirect:/brasileras";
+        return "redirect:/";
     }
 
     @GetMapping("/login")

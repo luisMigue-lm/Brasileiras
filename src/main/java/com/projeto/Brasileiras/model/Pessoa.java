@@ -44,7 +44,13 @@ public class Pessoa {
     @Column(name = "dt_nascimento", nullable = false)
     private LocalDate dtNascimento;
 
-    public Pessoa(Long id, String nome, String telefone, String email, String senha, String cpf, LocalDate dtNascimento, Endereco endereco) {
+    @Column(name = "endereco_foto")
+    private String enderecoFoto;
+
+    //@Column(name = "endereco")
+    //private Endereco endereco;
+
+    public Pessoa(Long id, String nome, String telefone, String email, String senha, String cpf, LocalDate dtNascimento, Endereco endereco, String enderecoFoto) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -52,6 +58,8 @@ public class Pessoa {
         this.senha = senha;
         this.cpf = cpf;
         this.dtNascimento = dtNascimento;
+        //this.endereco = endereco;
+        this.enderecoFoto = enderecoFoto;
     }
 
     public Pessoa() {
