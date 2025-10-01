@@ -12,7 +12,9 @@
     <header class="header-nav">
 
         <nav class="navegacao">
-            <img src="/img/logo/brasileiras-logo4.png" alt="Brasileiras - logotipo" id="logo-tipo">
+            <a th:href="@{/}">
+                <img src="/img/logo/brasileiras-logo4.png" alt="Brasileiras - logotipo" id="logo-tipo">
+            </a>
 
             <div class="barra-pesquisa">
                 <form method="post" action="">
@@ -24,7 +26,7 @@
 
             <div class="campo-usuario">
                 <a th:href="@{/cadastro}">
-                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="icon-loclz"
+                    <img src="/img/icons/user.svg" onmouseover="this.src='/img/icons/user-verde.svg'" onmouseout="this.src='/img/icons/user.svg'" alt="ícone de usuário" id="icon-loclz">
                     <p>Crie sua conta</p>
                 </a>
                 <a href="">
@@ -32,15 +34,15 @@
                 </a>
             </div>
             <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
-            
+
         </nav>
 
         <div class="menu-opcoes">
             <div class="endereco">
                 <a href="">
                     <img src="/img/icons/local.svg" alt="ponto de localização">
-                    
-                        <p>Informe o seu CEP</p>    
+
+                    <p>Informe o seu CEP</p>
 
                 </a>
             </div>
