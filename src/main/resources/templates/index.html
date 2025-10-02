@@ -20,20 +20,20 @@
                 <form method="post" action="">
                     <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
 
-                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa"></button>
+                    <button type="submit"><img src="/img/icons/lupa.svg" onmouseover="this.src='/img/icons/lupa-verde.svg'" onmouseout="this.src='/img/icons/lupa.svg'" alt="lupa de pesquisa"></button>
                 </form>
             </div>
 
             <div class="campo-usuario">
                 <a th:href="@{/cadastro}">
-                    <img src="/img/icons/user.svg" onmouseover="this.src='/img/icons/user-verde.svg'" onmouseout="this.src='/img/icons/user.svg'" alt="ícone de usuário" id="icon-loclz">
+                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="icon-loclz">
                     <p>Crie sua conta</p>
                 </a>
-                <a href="">
+                <a th:href="@{/login}">
                     <p>Entre</p>
                 </a>
             </div>
-            <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+            <a href=""><img src="/img/icons/carrinho.svg" onmouseover="this.src='/img/icons/carrinho-verde.svg'" onmouseout="this.src='/img/icons/carrinho.svg'" alt="carrinho de compras" id="carrinho"></a>
 
         </nav>
 

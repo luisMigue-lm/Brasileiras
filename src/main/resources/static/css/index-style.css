@@ -34,7 +34,7 @@ body {
 .barra-pesquisa form {
     display: flex;
     align-items: center;
-    border: 2px solid #ccc;
+    border: 2px solid #979797;
     border-radius: 5px;
     overflow: hidden;
     background: #FFFFFF;
@@ -65,7 +65,6 @@ body {
     height: 5vh;
 }
 
-
 .campo-usuario {
     display: flex;
     align-items: center;
@@ -85,6 +84,10 @@ body {
     color: #009b3a;
 }
 
+.campo-usuario a:hover img {
+    content: url("/img/icons/user-verde.svg");
+}
+
 #carrinho {
     width: 2.5vw;
 }
@@ -92,7 +95,6 @@ body {
 #icon-loclz {
     width: 2.5vw;
 }
-
 
 .endereco a {
     display: flex;
@@ -105,6 +107,10 @@ body {
     width: 2vw;
 }
 
+.endereco a:hover img {
+    content: url("/img/icons/local-verde.svg");
+}
+
 .menu-opcoes {
     font-size: 1rem;
     width: 50%;
@@ -112,6 +118,10 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+}
+
+.menu-opcoes img{
+    padding-right: 5%;
 }
 
 .menu-opcoes ul {
@@ -130,7 +140,6 @@ body {
     color: #000000E3;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
 .menu-opcoes a:hover {
