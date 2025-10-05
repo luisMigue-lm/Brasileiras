@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index-style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Brasileiras | Bem-vindo(a)</title>
 </head>
 
@@ -12,35 +13,38 @@
     <header class="header-nav">
 
         <nav class="navegacao">
-            <a th:href="@{/}">
-                <img src="/img/logo/brasileiras-logo4.png" alt="Brasileiras - logotipo" id="logo-tipo">
-            </a>
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img src="/img/logo/brasileiras-logo4.png" alt="Brasileiras - logotipo" id="logo-tipo">
+                </a>
+            </div>
 
             <div class="barra-pesquisa">
                 <form method="post" action="">
                     <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
 
-                    <button type="submit"><img src="/img/icons/lupa.svg" onmouseover="this.src='/img/icons/lupa-verde.svg'" onmouseout="this.src='/img/icons/lupa.svg'" alt="lupa de pesquisa"></button>
+                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa"></button>
                 </form>
             </div>
 
             <div class="campo-usuario">
-                <a th:href="@{/cadastro}">
-                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="icon-loclz">
+                <a th:href="@{/cadastro-cliente}">
+                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
                     <p>Crie sua conta</p>
                 </a>
-                <a th:href="@{/login}">
+
+                <a th:href="@{/login-cliente}">
                     <p>Entre</p>
                 </a>
-            </div>
-            <a href=""><img src="/img/icons/carrinho.svg" onmouseover="this.src='/img/icons/carrinho-verde.svg'" onmouseout="this.src='/img/icons/carrinho.svg'" alt="carrinho de compras" id="carrinho"></a>
 
+            </div>
+            <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
         </nav>
 
         <div class="menu-opcoes">
             <div class="endereco">
                 <a href="">
-                    <img src="/img/icons/local.svg" alt="ponto de localização">
+                    <img src="/img/icons/local.svg" alt="ponto de localização" id="icon-loclz">
 
                     <p>Informe o seu CEP</p>
 
@@ -73,6 +77,8 @@
     <footer>
 
     </footer>
+
+    <script src="/js/index-script.js"></script>
 </body>
 
 </html>

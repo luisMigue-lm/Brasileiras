@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login-style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Brasileiras | Login</title>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a th:href="@{/}">
+                <img src="/img/logo/brasileiras-logo3.png" alt="Brasileiras - logotipo" id="logo-tipo">
+            </a>
+        </div>
+    </header>
+
+    <section class="corpo">
+        <form th:action="@{/cliente-login}" method="post">
+            <div class="form email">
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:name="email" required />
+            </div>
+
+            <div class="form senha">
+                <label for="senha">Senha:</label>
+                <div class="senha-container">
+                    <input type="password" id="senha" th:name="senha" required>
+                    <img src="/img/icons/olho-fechado.svg" alt="exibir senha" id="toggle-senha">
+                </div>
+            </div>
+
+            <div class="btn-logar">
+                <button type="submit">Login</button>
+            </div>
+
+            <div class="cadastro">
+                <p>Não possui cadastro? <a th:href="@{/cadastro-cliente}">Faça aqui</a></p>
+            </div>
+        </form>
+    </section>
+
+    <script src="/js/toggle-senha.js"></script>
+</body>
+
+</html>

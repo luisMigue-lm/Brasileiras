@@ -1,39 +1,121 @@
-body {
-    margin: 0;
+.cabecalho {
+    background-color: #ffe109;
+    padding: 1.5% 2% 2% 13%;
+    width: 85%;
 }
 
-header {
-    border-radius: 12px;
-    max-width: 500px;
+.logo {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+#logo-tipo {
+    width: 80%;
+    border-radius: 8px;
+}
+
+.corpo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+}
+
+.foto {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 850px;
-    margin: auto;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border: 3px solid #8f8f8f;
+    border-radius: 50%;
+}
+
+.foto label {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#preview-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+}
+
+.foto img:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.foto input[type="file"] {
+    display: none;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    gap: 1.5vw;
+    width: 90%;
 }
 
-label {
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.form label {
     font-weight: bold;
 }
 
-input {
+
+.form input {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 16px;
 }
 
-button {
-    margin-top: 15px;
-    padding: 12px;
+
+
+.senha-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.senha-container input {
+    width: 100%;
+    padding-right: 4%;
+}
+
+.senha-container img {
+    position: absolute;
+    position: absolute;
+    right: 0.1%;
+    width: 12%;
+    height: 50%;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #009b3a;
+}
+
+.btn-cadastrar button {
+    padding: 1vw 2vw;
     background-color: #009b3a;
-    color: #fff;
+    color: #FFFFFF;
     border: none;
     border-radius: 6px;
     font-size: 18px;
@@ -41,33 +123,24 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.btn-cadastrar {
+    margin-top: 2%;
+}
+
+.btn-cadastrar button:hover {
     background-color: #008531;
 }
 
 p {
-    margin-top: 20px;
+    margin-top: 2%;
     font-size: 17px;
-    text-align: center;
 }
 
-p a {
+.login p a {
     color: #009b3a;
     text-decoration: none;
 }
 
-p a:hover {
+.login p a:hover {
     text-decoration: underline;
-}
-
-
-.barra {
-    background-color: #ffe109;
-    padding: 12px 20px;
-}
-
-.barra img{
-    width: 15vw;
-    border: none;
-    border-radius: 8px;
 }
