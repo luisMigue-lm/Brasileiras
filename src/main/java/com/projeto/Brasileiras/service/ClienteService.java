@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 
 @Service
 public class ClienteService {                                 //tem que mudar sempre
-    public static final String enderecoArmazenamentoArquivo = "C:/IFerno/3º Ano/Web/3º Bimestre/Brasileiras/src/main/resources/static/img/fotos";
+    public static final String enderecoArmazenamentoArquivo = "C:/IFerno/3º Ano/Web/3º Bimestre/Brasileiras/src/main/resources/static/img/fotos/clientes";
 
     public String salvarFoto(MultipartFile arquivo) throws IOException {
         if (arquivo == null || arquivo.isEmpty()) {
@@ -30,7 +30,7 @@ public class ClienteService {                                 //tem que mudar se
         File destino = new File(pasta, nomeArquivo);
         Files.copy(arquivo.getInputStream(), destino.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-        return "img/fotos/" + nomeArquivo;
+        return "/img/fotos/clientes/" + nomeArquivo;
 
     }
 }
