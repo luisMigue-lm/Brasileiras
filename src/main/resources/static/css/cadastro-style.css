@@ -1,18 +1,21 @@
 .cabecalho {
-    background-color: #ffe109;
+    display: flex;
+    background-color: #009440;
     padding: 1.5% 2% 2% 13%;
     width: 85%;
 }
 
 .logo {
-    display: flex;
-    width: 100%;
-    height: auto;
+    background-color: #fff;
+    width: 25%;
+    border-radius: 50px;
+    padding: 1% 2%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 #logo-tipo {
-    width: 80%;
-    border-radius: 8px;
+    width: 100%;
+    display: block;
 }
 
 .corpo {
@@ -114,7 +117,7 @@ form {
 
 .btn-cadastrar button {
     padding: 1vw 2vw;
-    background-color: #009b3a;
+    background-color: #009440;
     color: #FFFFFF;
     border: none;
     border-radius: 6px;

@@ -15,7 +15,7 @@
         <nav class="navegacao">
             <div class="logo">
                 <a th:href="@{/}">
-                    <img src="/img/logo/brasileiras-logo4.png" alt="Brasileiras - logotipo" id="logo-tipo">
+                    <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-tipo">
                 </a>
             </div>
 
@@ -38,7 +38,9 @@
                 </a>
 
             </div>
-            <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+            <div class="carrinho">
+                <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+            </div>
         </nav>
 
         <div class="menu-opcoes">
@@ -52,29 +54,205 @@
             </div>
             <ul>
                 <li>
-                    <a href="">Laticinios</a>
+                    <a th:href="@{/}">Origem Animal</a>
                 </li>
                 <li>
-                    <a href="">Vegetais</a>
+                    <a th:href="@{/}">Vegetais</a>
                 </li>
                 <li>
-                    <a href="">Tubercúlos</a>
+                    <a th:href="@{/}">Tubercúlos</a>
                 </li>
                 <li>
-                    <a href="">Artesanatos</a>
+                    <a th:href="@{/}">Frutas</a>
                 </li>
                 <li>
-                    <a href="">Sobre nós</a>
+                    <a th:href="@{/}">Artesanatos</a>
+                </li>
+                <li>
+                    <a th:href="@{/}">Sobre nós</a>
                 </li>
             </ul>
         </div>
-
     </header>
 
-    <section>
+    <section class="corpo">
+        <div class="container destaques">
+            <h1>Destaques</h1>
+            <div class="produtos-grid">
+                <div class="produto produto1">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto2">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto3">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto4">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto5">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container animal">
+            <h1>Produtos de origem animal</h1>
+            <div class="produtos-grid">
+                <div class="produto produto6">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto7">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto8">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container artesanal">
+            <h1>Produtos artesanais</h1>
+            <div class="produtos-grid">
+                <div class="produto produto9">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container vegetal">
+            <h1>Confira nosssos Vegetais fresquinhos</h1>
+            <div class="produtos-grid">
+                <div class="produto produto10">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto11">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto12">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto13">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container tuberculos">
+            <h1>Diretamente da terra para você</h1>
+            <div class="produtos-grid">
+                <div class="produto produto14">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto15">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container frutas">
+            <h1>Frutas selecionadas</h1>
+            <div class="produtos-grid">
+                <div class="produto produto16">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto17">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto18">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+                <div class="produto produto19">
+                    <a href="">
+                        <img src="" alt="">
+                        <p>texto</p>
+                        <p>R$00,00</p>
+                    </a>
+                </div>
+            </div>
+        </div>
 
+       
     </section>
     <footer>
+        <div class="logo">
+            <a th:href="@{/}">
+                <img src="/img/logo/brasileiras-logo0.svg" alt="Brasileiras - logotipo" id="logo-tipo">
+            </a>
+            <a th:href="@{/}">
+                <p>Voltar ao Início</p>
+            </a>
+            <p>© 2025 Brasileiras.com</p>
+        </div>
+
 
     </footer>
 

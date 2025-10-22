@@ -13,13 +13,16 @@
     <header class="cabecalho">
         <div class="logo">
             <a th:href="@{/}">
-                <img src="/img/logo/brasileiras-logo3.png" alt="Brasileiras - logotipo" id="logo-tipo">
+                <img src="/img/logo/brasileiras-logo1.svg" alt="Brasileiras - logotipo" id="logo-tipo">
             </a>
         </div>
     </header>
 
     <section class="corpo">
         <form th:action="@{/cliente-login}" method="post">
+            <div class="titulo">
+                <h1>Digite seu Email e sua senha para iniciar sua sessão</h1>
+            </div>
             <div class="form email">
                 <label for="email">Email:</label>
                 <input type="email" id="email" th:name="email" required />
@@ -34,7 +37,7 @@
             </div>
 
             <div class="btn-logar">
-                <button type="submit">Login</button>
+                <button type="submit">Continuar</button>
             </div>
 
             <div class="cadastro">
