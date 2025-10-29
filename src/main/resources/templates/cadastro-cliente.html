@@ -19,13 +19,16 @@
     </header>
 
     <section class="corpo">
-        <form th:action="@{/cadastrar-cliente}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/cadastrar-cliente}" method="post">
+            <!--
             <div class="foto">
                 <label for="foto">
                     <img src="/img/icons/foto-cliente.svg" alt="campo para cadastrar foto do cliente" id="preview-foto">
                 </label>
                 <input hidden type="file" th:name="foto" id="foto" accept="image/*" >
             </div>
+            -->
+            <h1>Crie sua conta e faça parte da família</h1> 
 
             <div class="form nome">
                 <label for="nome">Nome:</label>
@@ -40,11 +43,6 @@
             <div class="form telefone">
                 <label for="telefone">Telefone:</label>
                 <input type="tel" id="telefone" th:name="telefone" required />
-            </div>
-
-            <div class="form dt-nascimento">
-                <label for="dtNascimento">Data de Nascimento:</label>
-                <input type="date" th:name="dtNascimento" id="dtNascimento" required>
             </div>
 
             <div class="form cpf">

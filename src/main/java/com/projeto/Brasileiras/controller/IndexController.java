@@ -1,19 +1,19 @@
 package com.projeto.Brasileiras.controller;
 
-import java.io.IOException;
-import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.projeto.Brasileiras.model.Cliente;
+import com.projeto.Brasileiras.model.Produto;
 import com.projeto.Brasileiras.repository.ClienteRepository;
-import com.projeto.Brasileiras.service.ClienteService;
+import com.projeto.Brasileiras.repository.ProdutoRepository;
 
 @Controller
 public class IndexController {
@@ -21,7 +21,7 @@ public class IndexController {
     @Autowired
     private ClienteRepository clienteRepository;
     @Autowired
-    private ClienteService clienteService;
+    private ProdutoRepository produtoRepository;
 
     @GetMapping("/cadastro-cliente")
     public String cadastro() {
@@ -29,35 +29,53 @@ public class IndexController {
     }
 
     @PostMapping("/cadastrar-cliente")
-    public String fazerlogin(@RequestParam("foto") MultipartFile foto, @RequestParam String nome,
-            @RequestParam String email, @RequestParam String telefone,
-            @RequestParam LocalDate dtNascimento, @RequestParam String senha, @RequestParam String cpf) {
+    public String fazerlogin(@RequestParam String nome,
+            @RequestParam String email, @RequestParam String telefone, @RequestParam String senha, @RequestParam String cpf) {
         try {
             Cliente cliente = new Cliente();
 
-            String caminhoSalvo = clienteService.salvarFoto(foto);
             cliente.setNome(nome);
             cliente.setEmail(email);
             cliente.setTelefone(telefone);
-            cliente.setDtNascimento(dtNascimento);
             cliente.setSenha(senha);
             cliente.setCpf(cpf);
-            cliente.setEnderecoFoto(caminhoSalvo);
 
             clienteRepository.save(cliente);
 
             return "redirect:/";
-        } catch (IOException e) {
+        } catch (Exception e) {
             return "Erro: " + e.getMessage();
         }
 
     }
 
-    @GetMapping("/login-cliente")
-    public String login() {
-        return "login-cliente";
+    @GetMapping("/listar-produtos")
+    public String listarProdutos(Model model) {
+        List<Produto> produtos = produtoRepository.findAll();
+        model.addAttribute("produtos", produtos);
+
+        return "index";
     }
 
+    @GetMapping("/produto/{id}")
+    public String detalhesProdutoId(@PathVariable Long id, Model model) {
+        Produto produto = produtoRepository.findById(id);
+        model.addAttribute("produto", produto);
+
+        return "produto-detalhes";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/cliente")
+    public String teste() {
+        return "cliente";
+    }
+
+    /* 
     @PostMapping("/logar-cliente")
     public String fazerlogin(@RequestParam String email, @RequestParam String senha, Model model) {
 
@@ -72,4 +90,5 @@ public class IndexController {
             return "login-cliente";
         }
     }
+        */
 }

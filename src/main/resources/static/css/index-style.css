@@ -104,88 +104,8 @@
     max-width: 150px;
 }
 
-.animal{
+.animal, .artesanal, .vegetais, .tuberculos, .frutas {
     max-width: 200px;
-}
-
-.artesanal {
-    max-width: 600px;
-}
-
-.vegetais {
-    max-width: 175px;
-}
-
-.tuberculos {
-    max-width: 500px;
-    max-height: 250px;
-}
-
-.tuberculos a, img, p{
-    max-width: 500px;
-    max-height: 250px;
-}
-
-.frutas {
-    max-width: 130px;
-}
-
-.produtoH {
-    flex-basis: 200px;
-    flex-grow: 1;
-    padding: 2%;
-    border: 1px solid #D9D9D9;
-    border-radius: 18px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.produtoH a{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    align-items: center;
-    gap: 2rem;
-    max-width: 300px;    
-    text-decoration: none;
-    color: black;
-}
-
-.produtoH img {
-    width: 250px;
-    height: auto;
-    object-fit: cover;
-    margin-right: 2rem;
-}
-
-.produtoH p {
-    margin: 0;
-}
-
-.produtoH p:first-child {
-    color: #000000;
-    width: 100%;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.info-produto p:hover{
-    color: #FFCB00;
-}
-
-.produtoH p:last-child {
-    color: #009440;
-    width: 100%;
-    font-weight: bold;
-    margin-bottom: 1%;
-    font-size: 2.5rem;
-
-}
-
-.info-produto {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
 }
 
 .produto a {

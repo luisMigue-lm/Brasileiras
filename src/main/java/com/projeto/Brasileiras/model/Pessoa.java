@@ -41,14 +41,14 @@ public class Pessoa {
     @Column(name = "cpf", unique = true, nullable = false, length = 14)
     private String cpf;
 
-    @Column(name = "dt_nascimento", nullable = false)
+    @Column(name = "dt_nascimento")
     private LocalDate dtNascimento;
 
     @Column(name = "endereco_foto")
     private String enderecoFoto;
 
-    //@Column(name = "endereco")
-    //private Endereco endereco;
+    @Column(name = "endereco")
+    private Endereco endereco;
 
     public Pessoa(Long id, String nome, String telefone, String email, String senha, String cpf, LocalDate dtNascimento, Endereco endereco, String enderecoFoto) {
         this.id = id;
@@ -58,7 +58,7 @@ public class Pessoa {
         this.senha = senha;
         this.cpf = cpf;
         this.dtNascimento = dtNascimento;
-        //this.endereco = endereco;
+        this.endereco = endereco;
         this.enderecoFoto = enderecoFoto;
     }
 
