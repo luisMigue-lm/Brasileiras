@@ -1,13 +1,12 @@
 .cabecalho {
-    display: flex;
     background-color: #009440;
     padding: 1.5% 2% 2% 13%;
-    width: 85%;
+    width: auto;
 }
 
 .logo {
     background-color: #fff;
-    width: 25%;
+    width: 20rem;
     border-radius: 50px;
     padding: 1% 2%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -23,55 +22,38 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding: 3%;
+    padding: 3rem;
 }
 
-.foto {
+.container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border: 3px solid #8f8f8f;
-    border-radius: 50%;
-}
-
-.foto label {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
-
-#preview-foto {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-
-}
-
-.foto img:hover {
-    transform: scale(1.03);
-    opacity: 0.9;
-}
-
-.foto input[type="file"] {
-    display: none;
+    width: 50%;
+    height: auto;
+    max-width: 1200px;
+    margin: 1.5rem;
+    border: 1px solid #D9D9D9;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+    gap: 1.5rem;
 }
 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5vw;
-    width: 90%;
+    width: 85%;
+    
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 75%;
 }
 
 .form label {
@@ -86,8 +68,6 @@ form {
     font-size: 16px;
 }
 
-
-
 .senha-container {
     position: relative;
     display: flex;
@@ -100,7 +80,6 @@ form {
 }
 
 .senha-container img {
-    position: absolute;
     position: absolute;
     right: 0.1%;
     width: 12%;

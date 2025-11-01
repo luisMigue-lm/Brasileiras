@@ -1,13 +1,17 @@
 package com.projeto.Brasileiras.model;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.List;  
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -21,13 +25,16 @@ public class Pedido {
     @Column(name = "num_pedido")
     private Long numPedido;
 
-    @Column(name = "cliente")
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     
-    @Column(name = "endereco_entrega")
+    @ManyToOne
+    @JoinColumn(name = "endereco_entrega_id")
     private Endereco enderecoEntrega;
 
-    @Column(name = "produtos_comprados")
+    @ManyToMany
+    @JoinTable(name = "pedido_produtos", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "produto_id"))
     private List<Produto> produtos;
 
     @Column(name = "data_pedido")

@@ -2,9 +2,12 @@ package com.projeto.Brasileiras.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data; 
@@ -30,10 +33,14 @@ public class Funcionario extends Pessoa{
     @Column(name = "matricula", nullable = false)
     private String matricula;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private Endereco endereco;
+
     public Funcionario(Long id, String nome, String telefone, String email, String senha, String cpf,
-            LocalDate dtNascimento, Endereco endereco, String enderecoFoto, double salario, String cargo, String departamento,
+            LocalDate dtNascimento, String enderecoFoto, double salario, String cargo, String departamento,
             String matricula) {
-        super(id, nome, telefone, email, senha, cpf, dtNascimento, endereco, enderecoFoto);
+        super(id, nome, telefone, email, senha, cpf, dtNascimento, enderecoFoto);
         this.salario = salario;
         this.cargo = cargo;
         this.departamento = departamento;

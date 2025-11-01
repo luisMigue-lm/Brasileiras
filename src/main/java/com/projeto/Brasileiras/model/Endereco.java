@@ -1,10 +1,14 @@
 package com.projeto.Brasileiras.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,8 +40,13 @@ public class Endereco {
     @Column(name = "estado", nullable = false)
     private String estado;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    @JsonIgnore
+    private Cliente cliente;
+
      public Endereco(Long id, String cep, String rua, int numResidencial, String complemento, String bairro,
-            String cidade, String estado) {
+            String cidade, String estado, Cliente cliente) {
         this.id = id;
         this.cep = cep;
         this.rua = rua;
@@ -46,6 +55,7 @@ public class Endereco {
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
+        this.cliente = cliente;
     }
 
     public Endereco() {}

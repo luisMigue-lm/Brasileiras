@@ -20,28 +20,30 @@
 
     <section class="corpo">
         <form th:action="@{/cliente-login}" method="post">
-            <div class="titulo">
+
+            <div class="container">
                 <h1>Digite seu Email e sua senha para iniciar sua sessão</h1>
-            </div>
-            <div class="form email">
-                <label for="email">Email:</label>
-                <input type="email" id="email" th:name="email" required />
-            </div>
 
-            <div class="form senha">
-                <label for="senha">Senha:</label>
-                <div class="senha-container">
-                    <input type="password" id="senha" th:name="senha" required>
-                    <img src="/img/icons/olho-fechado.svg" alt="exibir senha" id="toggle-senha">
+                <div class="form email">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" th:name="email" required />
                 </div>
-            </div>
 
-            <div class="btn-logar">
-                <button type="submit">Continuar</button>
-            </div>
+                <div class="form senha">
+                    <label for="senha">Senha:</label>
+                    <div class="senha-container">
+                        <input type="password" id="senha" th:name="senha" required>
+                        <img src="/img/icons/olho-fechado.svg" alt="exibir senha" id="toggle-senha">
+                    </div>
+                </div>
 
-            <div class="cadastro">
-                <p>Não possui cadastro? <a th:href="@{/cadastro-cliente}">Faça aqui</a></p>
+                <div class="btn-logar">
+                    <button type="submit">Continuar</button>
+                </div>
+
+                <div class="cadastro">
+                    <p>Não possui cadastro? <a th:href="@{/cadastro-cliente}">Faça aqui</a></p>
+                </div>
             </div>
         </form>
     </section>

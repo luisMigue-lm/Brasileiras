@@ -32,7 +32,7 @@ public class Pessoa {
     @Column(name = "telefone", nullable = false, length = 20)
     private String telefone;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "senha", nullable = false, length = 100)
@@ -47,10 +47,7 @@ public class Pessoa {
     @Column(name = "endereco_foto")
     private String enderecoFoto;
 
-    @Column(name = "endereco")
-    private Endereco endereco;
-
-    public Pessoa(Long id, String nome, String telefone, String email, String senha, String cpf, LocalDate dtNascimento, Endereco endereco, String enderecoFoto) {
+    public Pessoa(Long id, String nome, String telefone, String email, String senha, String cpf, LocalDate dtNascimento, String enderecoFoto) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -58,7 +55,6 @@ public class Pessoa {
         this.senha = senha;
         this.cpf = cpf;
         this.dtNascimento = dtNascimento;
-        this.endereco = endereco;
         this.enderecoFoto = enderecoFoto;
     }
 
