@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/svg" href="/img/logo/brasileiras-logo3.svg">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/footer-style.css">
@@ -60,8 +61,58 @@
         </div>
         <div class="informacoes">
             <div>
-                <h3>Meu Perfil</h3>
-                <div>
+                <div class="informacoes-read">
+                    <h3>Meu Perfil</h3>
+                    <div class="perfil-container">
+                        <div class="form-fields">
+                            <div class="form nome">
+                                <label for="nome">Nome:</label>
+                                <p>Nome do usuário</p>
+                            </div>
+
+                            <div class="form email">
+                                <label for="email">Email:</label>
+                                <p>email@do.usuario.com</p>
+                            </div>
+
+                            <div class="form telefone">
+                                <label for="telefone">Telefone:</label>
+                                <p>(xx)xxxx xxxx</p>
+                            </div>
+
+                            <div class="form dt-nascimento">
+                                <label for="dtNascimento">Data de Nascimento:</label>
+                                <p>xx/xx/xxxx</p>
+                            </div>
+
+                            <div class="form cpf">
+                                <label for="cpf">CPF:</label>
+                                <p>xxx.xxx.xxx.xx</p>
+                            </div>
+
+                            <div class="form senha">
+                                <label for="senha">Senha:</label>
+                                <div class="senha-container">
+                                    <input type="password" id="senha" value="segredo" th:name="senha" required>
+                                    <img src="/img/icons/olho-fechado.svg" alt="exibir senha" id="toggle-senha">
+                                </div>
+                            </div>
+
+
+                            <div class="btn-informacoes">
+                                <button type="button" class="btn-alterar">Alterar informações</button>
+                                <button type="button" class="btn-deletar">Excluir minha conta</button>
+                            </div>
+
+                        </div>
+                        <div class="foto-upload">
+                            <img src="/img/icons/foto-cliente.svg" alt="foto do cliente" id="foto-cliente">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="informacoes-update">
+                    <h3>Meu Perfil | Atualização</h3>
                     <form th:action="@{/atualizar-cliente}" method="post" enctype="multipart/form-data">
 
                         <div class="perfil-container">
@@ -99,11 +150,13 @@
                                     </div>
                                 </div>
 
-
                                 <div class="btn-atualizar">
                                     <button type="submit">Salvar alterações</button>
+                                    <a th:href="@{/cliente}" id="cancelar-update" class="link-cancelar">Cancelar</a>
                                 </div>
+
                             </div>
+
                             <div class="foto-upload">
                                 <label for="foto">
                                     <img src="/img/icons/foto-cliente.svg" alt="campo para cadastrar foto do cliente"
@@ -113,10 +166,23 @@
                                 <label for="foto" class="btn-foto">Selecione a imagem</label>
                                 <p>Extensão de arquivo: .JPEG, .PNG</p>
                             </div>
-
                         </div>
+                </div>
 
-
+                <div class="informacoes-delete">
+                    <h3>Excluir conta</h3>
+                    <div class="txt-delete">
+                        <p>
+                            <span>ATENÇÃO:</span> esta ação é irreversível. Todos os seus dados,
+                            pedidos e endereços serão permanentemente removidos.
+                        </p>
+                        <div class="btn-excluir">
+                            <form th:action="@{/}" method="post" id="form-delete">
+                                <button type="submit" class="btn-deletar">Quero excluir minha conta</button>
+                            </form>
+                            <button type="button" class="cancelar-delete">Cancelar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
     </section>
@@ -135,6 +201,7 @@
 
     </footer>
     <script src="/js/troca-icons.js"></script>
+    <script src="/js/cliente-toggle.js"></script>
     <script src="/js/preview-foto.js"></script>
     <script src="/js/toggle-senha.js"></script>
 </body>
