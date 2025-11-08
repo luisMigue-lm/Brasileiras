@@ -62,10 +62,17 @@ form {
 
 
 .form input {
-    padding: 12px;
+    padding: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 1rem;
+}
+
+.form select {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
 }
 
 .senha-container {
@@ -76,17 +83,16 @@ form {
 
 .senha-container input {
     width: 100%;
-    padding-right: 4%;
+    padding-right: 3%;
 }
 
-.senha-container img {
+.senha-container img#toggle-senha {
     position: absolute;
-    right: 0.1%;
-    width: 12%;
-    height: 50%;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    opacity: 0.6;
 }
 
 .form input:focus {
@@ -95,13 +101,14 @@ form {
 }
 
 .btn-cadastrar button {
-    padding: 1vw 2vw;
+    padding: 1.3rem 2.5rem;
     background-color: #009440;
     color: #FFFFFF;
     border: none;
     border-radius: 6px;
-    font-size: 18px;
+    font-size: 1.2rem;
     cursor: pointer;
+    margin-bottom: 1rem;
     transition: background-color 0.3s;
 }
 
@@ -114,8 +121,8 @@ form {
 }
 
 p {
-    margin-top: 2%;
-    font-size: 17px;
+    margin-top: 0;
+    font-size: 1.1rem;
 }
 
 .login p a {

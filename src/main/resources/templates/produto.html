@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/svg" href="/img/logo/brasileiras-logo3.svg">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="stylesheet" href="/css/produto-style.css">
+    <title>Produto | Brasileiras</title>
+</head>
+
+<body>
+    <header class="header-nav">
+
+        <nav class="navegacao">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-tipo">
+                </a>
+            </div>
+
+            <div class="barra-pesquisa">
+                <form method="post" action="">
+                    <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
+
+                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa"></button>
+                </form>
+            </div>
+
+            <div class="campo-usuario">
+                <a th:href="@{/cadastro-cliente}">
+                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                    <p>Crie sua conta</p>
+                </a>
+
+                <a th:href="@{/login}">
+                    <p>Entre</p>
+                </a>
+
+            </div>
+            <div class="carrinho">
+                <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="corpo">
+
+        <div class="container">
+            <div class="card produtos-card">
+
+                <div class="produto-image">
+                    <img src="/img/fotos/produtos/placeholder.jpg" alt="Lichia organica natural">
+                </div>
+
+                <div class="produto-info">
+                    <h1>Lichia organica natural, bandeja com 350G</h1>
+
+                    <div class="preco">R$29,99</div>
+
+                    <p class="parcelas">3x de R$9,99 sem juros</p>
+                    <p class="frete">Frete grátis</p>
+                    <p class="dt-validade">Data de validade: 05/11/2025</p>
+                </div>
+
+                <div class="caixa-compra">
+                    <label for="quantdd">Quantidade</label>
+                    <div class="quantdd-selector">
+                        <button class="quantdd-btn">-</button>
+                        <span>1 unidade</span>
+                        <button class="quantdd-btn">+</button>
+                    </div>
+
+                    <div class="vendedor">
+                        <p>Vendido por:</p>
+                        <span>Ana Laila, Frutas organicas</span>
+                    </div>
+
+                    <button class="btn btn-compra">Comprar</button>
+                    <button class="btn btn-carrinho">Adicionar ao carrinho</button>
+                </div>
+            </div>
+
+            <div class="card descricao-card">
+                <h2>Descrição</h2>
+                <div class="conteudo-descricao">
+                    <p>
+                        Lichia natural produzida nas terras de Itapetininga-SP, sem uso de agrotóxicos, colhida no tempo
+                        ideial
+                        e conservada em ambiente próprio. Enviado com todo o cuidado. Diretamente do sítio para sua
+                        casa.
+
+                        Lichia vermelha - doce
+                        Bandeja de plástico, 350g
+
+                        Imagem tirada diretamente da área de plantio!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1>Destaques</h1>
+            <div class="produtos-grid">
+                <div class="produto destaques">
+                    <a href="">
+                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
+                        <p>Quijo Minas de leite comum 500g</p>
+                        <p>R$20,00</p>
+                    </a>
+                </div>
+                <div class="produto destaques">
+                    <a href="">
+                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
+                        <p>Quijo Minas de leite comum 500g</p>
+                        <p>R$20,00</p>
+                    </a>
+                </div>
+                <div class="produto destaques">
+                    <a href="">
+                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
+                        <p>Quijo Minas de leite comum 500g</p>
+                        <p>R$20,00</p>
+                    </a>
+                </div>
+                <div class="produto destaques">
+                    <a href="">
+                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
+                        <p>Quijo Minas de leite comum 500g</p>
+                        <p>R$20,00</p>
+                    </a>
+                </div>
+                <div class="produto destaques">
+                    <a href="">
+                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
+                        <p>Quijo Minas de leite comum 500g</p>
+                        <p>R$20,00</p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="rodape">
+        <div class="logo-footer">
+            <a th:href="@{/}">
+                <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-rodape">
+            </a>
+        </div>
+
+        <div class="texto-footer">
+            <p><a th:href="@{/}">Voltar ao Início</a></p>
+            <p>© 2025 Brasileiras.com</p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

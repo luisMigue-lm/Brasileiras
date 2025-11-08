@@ -1,0 +1,20 @@
+.erro404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15rem;
+}
+
+.erro404 h1 {
+    font-size: 2rem;
+}
+
+.erro404 p {
+    font-size: 1rem;
+}
+
+.erro404 p a {
+    text-decoration: none;
+    color: #009440;
+}

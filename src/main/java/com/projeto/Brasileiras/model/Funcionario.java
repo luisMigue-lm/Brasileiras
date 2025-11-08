@@ -29,29 +29,23 @@ public class Funcionario extends Pessoa{
     
     @Column(name = "departamento", nullable = false)
     private String departamento;
-    
-    @Column(name = "matricula", nullable = false)
-    private String matricula;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
 
     public Funcionario(Long id, String nome, String telefone, String email, String senha, String cpf,
-            LocalDate dtNascimento, String enderecoFoto, double salario, String cargo, String departamento,
-            String matricula) {
+            LocalDate dtNascimento, String enderecoFoto, double salario, String cargo, String departamento) {
         super(id, nome, telefone, email, senha, cpf, dtNascimento, enderecoFoto);
         this.salario = salario;
         this.cargo = cargo;
         this.departamento = departamento;
-        this.matricula = matricula;
     }
 
-    public Funcionario(double salario, String cargo, String departamento, String matricula) {
+    public Funcionario(double salario, String cargo, String departamento) {
         this.salario = salario;
         this.cargo = cargo;
         this.departamento = departamento;
-        this.matricula = matricula;
     }
 
     public Funcionario() {}
@@ -78,15 +72,5 @@ public class Funcionario extends Pessoa{
 
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-    
-
+    }   
 }

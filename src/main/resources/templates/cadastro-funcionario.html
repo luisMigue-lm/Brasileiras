@@ -20,10 +20,10 @@
     </header>
 
     <section class="corpo">
-        <form th:action="@{/cadastrar-cliente}" method="post">
+        <form th:action="@{/cadastrar-funcionario}" method="post">
 
             <div class="container">
-                <h1>Crie sua conta e faça parte da família</h1>
+                <h1>Cadastro | Novo funcionário</h1>
 
                 <div class="form nome">
                     <label for="nome">Nome:</label>
@@ -45,6 +45,25 @@
                     <input type="text" id="cpf" th:name="cpf" required />
                 </div>
 
+                <div class="form dt-nascimento">
+                    <label for="dt-nascimento">Data de nascimento:</label>
+                    <input type="date" id="dt-nascimento" th:name="dtNascimento" required />
+                </div>
+
+                <div class="form cargo">
+                    <label for="cargo">Cargo:</label>
+                    <select name="cargo" required id="cargo">
+                        <option value="">- Selecione uma opção -</option>
+                        <option th:value="administrador">Administrador</option>
+                        <option th:value="operador">Operador</option>
+                    </select>
+                </div>
+                
+                <div class="form departamento">
+                    <label for="departamento">Departamento:</label>
+                    <input type="text" id="departamento" th:name="departamento" required />
+                </div>
+
                 <div class="form senha">
                     <label for="senha">Senha:</label>
                     <div class="senha-container">
@@ -54,16 +73,14 @@
                 </div>
 
                 <div class="btn-cadastrar">
-                    <button type="submit">Cadastre-se</button>
+                    <button type="submit">Cadastre</button>
                 </div>
 
-                <div class="login">
-                    <p>Deseja fazer login? <a th:href="@{/login}">Faça aqui</a></p>
-                </div>
             </div>
         </form>
 
     </section>
+    <script src="/js/preview-foto.js"></script>
     <script src="/js/toggle-senha.js"></script>
 </body>
 

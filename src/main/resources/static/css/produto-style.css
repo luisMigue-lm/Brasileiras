@@ -1,0 +1,257 @@
+.corpo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;    
+    flex-direction: column;
+    width: auto;
+    height: auto;
+}
+
+.container {
+    width: 65%;
+    height: auto;
+    max-width: 1200px;
+    margin: 1.5rem;
+    border: 1px solid #D9D9D9;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+}
+
+.container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);    
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.produtos-card {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.produto-image {
+    flex-basis: 40%;
+    min-width: 300px;
+}
+
+.produto-image img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.produto-info {
+    flex: 1;
+}
+
+.produto-info h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2rem;
+    margin-left: 0;     
+}
+
+.produto-info .preco {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #009440; 
+    margin: 1rem 0;
+}
+
+.produto-info .parcelas {
+    font-size: 1.1rem; 
+    color: #555;
+    margin: 0.5rem 0;
+}
+
+.produto-info .frete {
+    font-size: 1.1rem; 
+    color: #009440; 
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.produto-info .dt-validade {
+    font-size: 1rem; 
+    color: #333;
+    margin-top: 10rem;
+}
+
+.caixa-compra {
+    flex-basis: 250px; 
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.caixa-compra label {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.quantdd-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+}
+
+.quantdd-selector .quantdd-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem; 
+    font-weight: 300;
+    cursor: pointer;
+    color: #555;
+    padding: 0 0.3rem;
+}
+
+.quantdd-selector span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.vendedor {
+    font-size: 0.9rem;
+    color: #555;
+    border-top: 1px solid #eee;
+    padding-top: 0.75rem;
+    margin-top: 1rem;
+}
+
+.vendedor p {
+    margin: 0 0 0.3rem 0;
+}
+
+.vendedor span {
+    color: #009440;
+    font-weight: 600;
+}
+
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.btn-compra {
+    background-color: #009440; 
+    color: #ffffff;
+    margin-top: 1rem;
+}
+
+.btn-compra:hover {
+    background-color: #007a36;
+}
+
+.btn-carrinho {
+    background-color: #c8e6c9; 
+    color: #009440; 
+    margin-top: 0.9rem;
+}
+
+.btn-carrinho:hover {
+    background-color: #b7e0b9;
+}
+
+
+.descricao-card h2 {
+    font-size: 1.8rem; 
+    color: #333;
+    margin-top: 0;
+    border-bottom: 2px solid #D9D9D9;
+    padding-bottom: 1rem;
+}
+
+.conteudo-descricao p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 2rem 0;
+}
+
+.produtos-grid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.produto {
+    flex-basis: 200px;
+    flex-grow: 1;
+    padding: 2%;
+    border: 1px solid #D9D9D9;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 125px;
+    margin-bottom: 1rem;
+}
+
+.produto a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.1rem;
+    height: 100%;
+    text-decoration: none;
+    color: #000000;
+}
+
+.produto img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.produto p:first-child {
+    color: #000000;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.produto a:hover {
+    color: #FFCB00;
+}
+
+.produto p:last-child {
+    color: #009440;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 1%;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
