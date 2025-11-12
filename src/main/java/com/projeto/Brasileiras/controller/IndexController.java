@@ -15,7 +15,7 @@ public class IndexController {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    @GetMapping("/listar-produtos")
+    @GetMapping("/")
     public String listarProdutos(Model model) {
         List<Produto> produtos = produtoRepository.findAll();
         model.addAttribute("produtos", produtos);

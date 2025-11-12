@@ -13,7 +13,8 @@ import org.springframework.util.StringUtils;
 
 @Service
 public class ClienteService {                                 //tem que mudar sempre
-    public static final String enderecoArmazenamentoArquivo = "C:/IFerno/3º Ano/Web/Brasileiras/src/main/resources/static/img/fotos/clientes";
+    //public static final String enderecoArmazenamentoArquivo = "C:/IFerno/3º Ano/Web/Brasileiras/src/main/resources/static/img/fotos/clientes";
+    public static final String enderecoArmazenamentoArquivo = "C:/Users/3028887/Documents/Brasileiras/src/main/resources/static/img/fotos/clientes";
 
     public String salvarFoto(MultipartFile arquivo) throws IOException {
         if (arquivo == null || arquivo.isEmpty()) {
