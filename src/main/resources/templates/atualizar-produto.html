@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/svg" href="/img/logo/brasileiras-logo3.svg">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="stylesheet" href="/css/atualizar-produto-style.css">
+    <title>Produto | Brasileiras</title>
+</head>
+
+<body>
+    <header class="header-nav">
+
+        <nav class="navegacao">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-tipo">
+                </a>
+            </div>
+
+            <div class="barra-pesquisa">
+                <form method="post" action="">
+                    <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
+
+                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa"></button>
+                </form>
+            </div>
+
+            <div class="campo-usuario">
+                <a th:href="@{/cadastro-cliente}">
+                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                    <p>Crie sua conta</p>
+                </a>
+
+                <a th:href="@{/login}">
+                    <p>Entre</p>
+                </a>
+
+            </div>
+            <div class="carrinho">
+                <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="corpo">
+
+        <form th:action="@{/produto/atualizar/{id}(id=${produto.id})}" method="post" enctype="multipart/form-data">
+
+            <div class="container">
+                <div class="card produtos-card">
+
+                    <div class="produto-image">
+                        <label for="foto">
+                            <img th:src="@{${#strings.isEmpty(produto.caminhoFoto)} ? '/img/fotos/produtos/placeholder.jpg' : ${produto.caminhoFoto}}"
+                                alt="Preview do produto" id="preview-foto">
+                        </label>
+                        <input type="file" name="foto" id="foto" accept="image/*" class="hidden-file-input">
+                        <label for="foto" class="btn-foto">Alterar imagem</label>
+                    </div>
+
+                    <div class="produto-info">
+
+                        <div class="form-group">
+                            <label for="nome">Nome do produto:</label>
+                            <input type="text" id="nome" name="nome" th:value="${produto.nome}" class="input-grande">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preco">Preço:</label>
+                            <input type="number" step="0.01" id="preco" name="preco" th:value="${produto.preco}"
+                                class="input-pequeno">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="validade">Data de validade:</label>
+                            <input type="date" id="validade" th:name="dtValidade" th:value="${produto.dtValidade}"
+                                class="input-medio">
+                        </div>
+
+                        <fieldset class="form-group category-group">
+                            <legend>Categoria:</legend>
+                            <div class="radio-options">
+                                <div class="radio-option">
+                                    <input type="radio" id="cat-animal" th:name="categoria" value="animal"
+                                        th:checked="${produto.categoria == 'animal'}">
+                                    <label for="cat-animal">Origem animal</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="cat-vegetal" th:name="categoria" value="vegetal"
+                                        th:checked="${produto.categoria == 'vegetal'}">
+                                    <label for="cat-vegetal">Vegetal</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="cat-vegetal" th:name="categoria" value="tuberculo"
+                                        th:checked="${produto.categoria == 'tuberculo'}">
+                                    <label for="cat-vegetal">Tuberculo</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="cat-vegetal" th:name="categoria" value="fruta"
+                                        th:checked="${produto.categoria == 'fruta'}">
+                                    <label for="cat-vegetal">Fruta</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="cat-vegetal" th:name="categoria" value="artesanato"
+                                        th:checked="${produto.categoria == 'artesanato'}">
+                                    <label for="cat-vegetal">Artesanatos</label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div>
+
+                    <div class="caixa-compra">
+
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade em estoque:</label>
+                            <input type="number" id="quantidade" th:name="quantd" th:value="${produto.quantidade}"
+                                class="input-pequeno">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="produtor">Vendido por:</label>
+                            <input type="text" id="produtor" th:name="produtor" th:value="${produto.produtor}"
+                                class="input-medio">
+                        </div>
+
+                        <button type="submit" class="btn btn-atualizar">Atualizar</button>
+        </form>
+        <form th:action="@{/produto/excluir/{id}(id=${produto.id})}" th:method="post">
+            <button type="submit" class="btn btn-excluir">Excluir</button>
+        </form>
+
+        </div>
+        </div>
+
+        <div class="card descricao-card">
+            <h2>Descrição</h2>
+            <div class="conteudo-descricao">
+                <textarea name="descricao" th:text="${produto.descricao}" rows="6"></textarea>
+            </div>
+        </div>
+        </div>
+
+
+    </section>
+
+    <footer class="rodape">
+        <div class="logo-footer">
+            <a th:href="@{/}">
+                <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-rodape">
+            </a>
+        </div>
+
+        <div class="texto-footer">
+            <p><a th:href="@{/}">Voltar ao Início</a></p>
+            <p>© 2025 Brasileiras.com</p>
+        </div>
+
+    </footer>
+    <script src="/js/preview-foto.js"></script>
+    <script src="/js/produto-quantdd.js"></script>
+</body>
+
+</html>

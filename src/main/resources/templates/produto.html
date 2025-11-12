@@ -53,30 +53,34 @@
             <div class="card produtos-card">
 
                 <div class="produto-image">
-                    <img src="/img/fotos/produtos/placeholder.jpg" alt="Lichia organica natural">
+                    <img th:src="@{${produto.caminhoFoto}}" alt="produto">
                 </div>
 
                 <div class="produto-info">
-                    <h1>Lichia organica natural, bandeja com 350G</h1>
+                    <h1>[[${produto.nome}]]</h1>
 
-                    <div class="preco">R$29,99</div>
+                    <div class="preco">R$[[${#numbers.formatDecimal(produto.preco / 1, 2, 2)}]]</div>
 
-                    <p class="parcelas">3x de R$9,99 sem juros</p>
+                    <p class="parcelas">3x de R$
+                        [[${#numbers.formatDecimal(produto.preco / 3, 2, 2)}]]
+                        sem juros</p>
                     <p class="frete">Frete grátis</p>
-                    <p class="dt-validade">Data de validade: 05/11/2025</p>
+                    <p class="dt-validade">Data de validade: <br>[[${produto.dtValidade}]]</p>
                 </div>
 
                 <div class="caixa-compra">
-                    <label for="quantdd">Quantidade</label>
+                    <label for="quantdd">Quantidade:</label>
                     <div class="quantdd-selector">
-                        <button class="quantdd-btn">-</button>
-                        <span>1 unidade</span>
-                        <button class="quantdd-btn">+</button>
+                        <button type="button" class="quantdd-btn" id="btn-diminuir">-</button>
+                        <span id="quantity-value">[[${produto.quantidade}]] unidades</span>
+                        <button type="button" class="quantdd-btn" id="btn-aumentar">+</button>
                     </div>
+
+                    <input type="hidden" th:name="quantd" id="input-quantidade" value="1"  th:attr="data-max=${produto.quantidade}">
 
                     <div class="vendedor">
                         <p>Vendido por:</p>
-                        <span>Ana Laila, Frutas organicas</span>
+                        <span>[[${produto.produtor}]]</span>
                     </div>
 
                     <button class="btn btn-compra">Comprar</button>
@@ -88,15 +92,7 @@
                 <h2>Descrição</h2>
                 <div class="conteudo-descricao">
                     <p>
-                        Lichia natural produzida nas terras de Itapetininga-SP, sem uso de agrotóxicos, colhida no tempo
-                        ideial
-                        e conservada em ambiente próprio. Enviado com todo o cuidado. Diretamente do sítio para sua
-                        casa.
-
-                        Lichia vermelha - doce
-                        Bandeja de plástico, 350g
-
-                        Imagem tirada diretamente da área de plantio!</p>
+                        [[${produto.descricao}]]</p>
                 </div>
             </div>
         </div>
@@ -157,6 +153,7 @@
         </div>
 
     </footer>
+    <script src="/js/produto-quantdd.js"></script>
 </body>
 
 </html>

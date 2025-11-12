@@ -21,7 +21,7 @@ public class ProdutoRepository {
     }
 
     public List<Produto> findAll() {
-        String jpql = "SELECT p FROM Produto";
+        String jpql = "SELECT p FROM Produto p";
         return em.createQuery(jpql, Produto.class).getResultList();
     }
 

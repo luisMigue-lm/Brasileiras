@@ -4,14 +4,17 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.projeto.Brasileiras.model.Funcionario;
 import com.projeto.Brasileiras.repository.FuncionarioRepository;
 import com.projeto.Brasileiras.service.FuncionarioService;
+
 
 @Controller
 public class FuncionarioController {
@@ -22,7 +25,7 @@ public class FuncionarioController {
     private FuncionarioService funcionarioService;
 
     @GetMapping("/funcionario")
-    public String funcionario() {
+    public String paginaFuncionario() {
         return "funcionario";
     }
 
@@ -62,7 +65,43 @@ public class FuncionarioController {
                 }
     }
 
-    @PostMapping("/excluir-funcionario/{id}")
+    @GetMapping("/funcionario/{id}")
+    public String detalhesFuncionarioId(@PathVariable Long id, Model model) {
+        Funcionario funcionario = funcionarioRepository.findById(id);
+        model.addAttribute("funcionario", funcionario);
+
+        return "funcionario";
+    }
+    
+    @PostMapping("/funcionario/atualizar/{id}")
+    public String postMethodName(@PathVariable Long id, @RequestParam("foto") MultipartFile foto, @RequestParam String nome,
+            @RequestParam String email, @RequestParam String telefone,
+            @RequestParam LocalDate dtNascimento, @RequestParam String senha, @RequestParam String cpf) {
+        try {
+            Funcionario funcionario = funcionarioRepository.findById(id);
+
+            funcionario.setNome(nome);
+            funcionario.setEmail(email);
+            funcionario.setTelefone(telefone);
+            funcionario.setDtNascimento(dtNascimento);
+            funcionario.setSenha(senha);
+            funcionario.setCpf(cpf);
+            if (!foto.isEmpty()) {
+                String caminhoSalvo = funcionarioService.salvarFoto(foto);
+                funcionario.setEnderecoFoto(caminhoSalvo);
+            }
+
+            funcionarioRepository.update(funcionario);
+
+            return "redirect:/funcionario/" + id;
+        } catch (Exception e) {
+            return "Erro: " + e.getMessage();
+        }
+        
+    }
+    
+
+    @PostMapping("/funcionario/excluir-conta/{id}")
     public String excluirCliente(@PathVariable Long id) {
         funcionarioRepository.deleteById(id);
         

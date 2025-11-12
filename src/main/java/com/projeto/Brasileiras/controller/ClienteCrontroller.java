@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,18 +23,21 @@ public class ClienteCrontroller {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/cliente")
-    public String pagCliente() {
+    @GetMapping("/cliente/{id}")
+    public String detalhesClienteId(@PathVariable Long id, Model model) {
+        Cliente cliente = clienteRepository.findById(id);
+        model.addAttribute("cliente", cliente);
+
         return "cliente";
     }
 
     @GetMapping("/cadastro-cliente")
-    public String cadastro() {
+    public String cadastroCliente() {
         return "cadastro-cliente";
     }
 
     @PostMapping("/cadastrar-cliente")
-    public String fazerlogin(@RequestParam String nome,
+    public String cadastrarCliente(@RequestParam String nome,
             @RequestParam String email, @RequestParam String telefone, @RequestParam String senha, @RequestParam String cpf) {
         try {
             Cliente cliente = new Cliente();
@@ -53,36 +57,38 @@ public class ClienteCrontroller {
 
     }
 
-    @PostMapping("/atualizar-cliente")
-    public String fazerlogin(@RequestParam("foto") MultipartFile foto, @RequestParam String nome,
+    @PostMapping("/cliente/atualizar/{id}")
+    public String updateCliente(@PathVariable Long id, @RequestParam("foto") MultipartFile foto, @RequestParam String nome,
             @RequestParam String email, @RequestParam String telefone,
             @RequestParam LocalDate dtNascimento, @RequestParam String senha, @RequestParam String cpf) {
         try {
-            Cliente cliente = new Cliente();
+            Cliente cliente = clienteRepository.findById(id);
 
-            String caminhoSalvo = clienteService.salvarFoto(foto);
             cliente.setNome(nome);
             cliente.setEmail(email);
             cliente.setTelefone(telefone);
             cliente.setDtNascimento(dtNascimento);
             cliente.setSenha(senha);
             cliente.setCpf(cpf);
-            cliente.setEnderecoFoto(caminhoSalvo);
+            if (!foto.isEmpty()) {
+                String caminhoSalvo = clienteService.salvarFoto(foto);
+                cliente.setEnderecoFoto(caminhoSalvo);
+            }
 
             clienteRepository.update(cliente);
             
-            return "redirect:/";
+            return "redirect:/cliente/" + id;
         } catch (IOException e) {
             return "Erro: " + e.getMessage();
         }
 
     }
 
-    @PostMapping("/excluir-cliente/{id}")
+    @PostMapping("/cliente/excluir-conta/{id}")
     public String excluirCliente(@PathVariable Long id) {
         clienteRepository.deleteById(id);
         
-        return "redirect:/";
+        return "redirect:/lista-cruds";
     }
     
 

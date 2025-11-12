@@ -23,7 +23,7 @@ public class ClienteRepository {
     }
 
     public List<Cliente> findAll() {
-        String jpql = "SELECT c FROM Cliente";
+        String jpql = "SELECT c FROM Cliente c";
         return em.createQuery(jpql, Cliente.class).getResultList();
     }
 

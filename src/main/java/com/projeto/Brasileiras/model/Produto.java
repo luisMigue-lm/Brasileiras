@@ -23,14 +23,17 @@ public class Produto {
     @Column(name = "nome",nullable = false)
     private String nome;
     
-    @Column(name = "quantide")
-    private String quantidade;
+    @Column(name = "quantidade")
+    private int quantidade;
+
+    @Column(name = "descricao")
+    private String descricao;
 
     @Column(name = "categoria")
     private String categoria;
 
     @Column(name = "preco")
-    private String preco;
+    private double preco;
 
     @Column(name = "produtor")
     private String produtor;
@@ -41,7 +44,7 @@ public class Produto {
     @Column(name = "caminho_foto")
     private String caminhoFoto;
 
-    public Produto(Long id, String nome, String quantidade, String categoria, String preco, String produtor,
+    public Produto(Long id, String nome, int quantidade, String categoria, double preco, String produtor,
             LocalDate dtValidade, String caminhoFoto) {
         this.id = id;
         this.nome = nome;

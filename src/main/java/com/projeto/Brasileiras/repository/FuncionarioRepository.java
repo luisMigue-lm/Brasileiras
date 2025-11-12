@@ -21,7 +21,7 @@ public class FuncionarioRepository {
     }
 
     public List<Funcionario> findAll() {
-        String jpql = "SELECT f FROM Funcionario";
+        String jpql = "SELECT f FROM Funcionario f";
         return em.createQuery(jpql, Funcionario.class).getResultList();
     }
 

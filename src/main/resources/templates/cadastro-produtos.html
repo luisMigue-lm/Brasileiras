@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/svg" href="/img/logo/brasileiras-logo3.svg">
+    <link rel="stylesheet" href="/css/cadastro-produto-style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Brasileiras | Bem-vindo(a)</title>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a th:href="@{/}">
+                <img src="/img/logo/brasileiras-logo1.svg" alt="Brasileiras - logotipo" id="logo-tipo">
+            </a>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h1>Cadastrar novo produto</h1>
+
+        <form th:action="@{/cadastrar-produto}" th:method="post" enctype="multipart/form-data">
+
+            <fieldset class="form-group category-group">
+                <legend>Categoria:</legend>
+                <div class="radio-options">
+                    <div class="radio-option">
+                        <input type="radio" id="cat-animal" th:name="categoria" th:value="animal">
+                        <label for="cat-animal">Origem animal</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="cat-vegetal" th:name="categoria" th:value="vegetal">
+                        <label for="cat-vegetal">Vegetal</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="cat-tuberculo" th:name="categoria" th:value="tuberculo">
+                        <label for="cat-tuberculo">Tubérculo</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="cat-fruta" th:name="categoria" th:value="fruta">
+                        <label for="cat-fruta">Fruta</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="cat-artesanato" th:name="categoria" th:value="artesanato">
+                        <label for="cat-artesanato">Artesanato</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-columns">
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" th:name="nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição:</label>
+                        <textarea id="descricao" th:name="descricao" rows="6"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="produtor">Produtor:</label>
+                        <input type="text" th:name="produtor">
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="preco">Preço:</label>
+                        <input type="number" step="any" th:name="preco">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quantidade:</label>
+                        <div class="quantity-selector">
+                            <button type="button" class="quantity-btn" id="btn-diminuir">-</button>
+                            <span id="quantity-value">0 unidades</span>
+                            <button type="button" class="quantity-btn" id="btn-aumentar">+</button>
+                        </div>
+                    </div>
+                    <input type="hidden" th:name="quantd" id="input-quantidade" th:value="0">
+
+                    <div class="form-group">
+                        <label for="validade">Data de validade:</label>
+                        <input type="date"  th:name="dtValidade">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foto">Foto do produto:</label>
+                        <input type="file" id="foto" th:name="foto" class="hidden-file-input" accept="image/*">
+                        <label for="foto" class="file-input-label">Selecione a imagem</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn-submit">Cadastre</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="/js/form-produto.js"></script>
+    <script src="/js/troca-icons.js"></script>
+</body>
+
+</html>

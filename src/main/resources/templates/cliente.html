@@ -59,6 +59,7 @@
                 <li><a th:href="@{/cliente/pedidos}">Meus pedidos</a></li>
             </ul>
         </div>
+        
         <div class="informacoes">
             <div>
                 <div class="informacoes-read">
@@ -67,27 +68,29 @@
                         <div class="form-fields">
                             <div class="form nome">
                                 <label for="nome">Nome:</label>
-                                <p>Nome do usuário</p>
+                                <p>[[${cliente.nome}]]</p>
                             </div>
 
                             <div class="form email">
                                 <label for="email">Email:</label>
-                                <p>email@do.usuario.com</p>
+                                <p>[[${cliente.email}]]</p>
                             </div>
 
                             <div class="form telefone">
                                 <label for="telefone">Telefone:</label>
-                                <p>(xx)xxxx xxxx</p>
+                                <p>[[${cliente.telefone}]]</p>
                             </div>
 
                             <div class="form dt-nascimento">
                                 <label for="dtNascimento">Data de Nascimento:</label>
-                                <p>xx/xx/xxxx</p>
+                                <p
+                                    th:text="${#strings.isEmpty(cliente.dtNascimento)} ? 'Não informado' : ${cliente.dtNascimento}">
+                                </p>
                             </div>
 
                             <div class="form cpf">
                                 <label for="cpf">CPF:</label>
-                                <p>xxx.xxx.xxx.xx</p>
+                                <p>[[${cliente.cpf}]]</p>
                             </div>
 
                             <div class="btn-informacoes">
@@ -97,67 +100,10 @@
 
                         </div>
                         <div class="foto-upload">
-                            <img src="/img/icons/foto-cliente.svg" alt="foto do cliente" id="foto-cliente">
+                            <img th:src="@{${#strings.isEmpty(cliente.enderecoFoto)} ? '/img/icons/foto-cliente.svg' : ${cliente.enderecoFoto}}"
+                                alt="foto do cliente" id="foto-cliente">
                         </div>
                     </div>
-                </div>
-
-                <div class="informacoes-update">
-                    <h3>Meu Perfil | Atualização</h3>
-                    <form th:action="@{/atualizar-cliente}" method="post" enctype="multipart/form-data">
-
-                        <div class="perfil-container">
-                            <div class="form-fields">
-                                <div class="form nome">
-                                    <label for="nome">Nome:</label>
-                                    <input type="text" th:name="nome" id="nome" required />
-                                </div>
-
-                                <div class="form email">
-                                    <label for="email">Email:</label>
-                                    <input type="email" id="email" th:name="email" required />
-                                </div>
-
-                                <div class="form telefone">
-                                    <label for="telefone">Telefone:</label>
-                                    <input type="tel" id="telefone" th:name="telefone" required />
-                                </div>
-
-                                <div class="form dt-nascimento">
-                                    <label for="dtNascimento">Data de Nascimento:</label>
-                                    <input type="date" th:name="dtNascimento" id="dtNascimento" required>
-                                </div>
-
-                                <div class="form cpf">
-                                    <label for="cpf">CPF:</label>
-                                    <input type="text" id="cpf" th:name="cpf" required />
-                                </div>
-
-                                <div class="form senha">
-                                    <label for="senha">Senha:</label>
-                                    <div class="senha-container">
-                                        <input type="password" id="senha" th:name="senha" required>
-                                        <img src="/img/icons/olho-fechado.svg" alt="exibir senha" id="toggle-senha">
-                                    </div>
-                                </div>
-
-                                <div class="btn-atualizar">
-                                    <button type="submit">Salvar alterações</button>
-                                    <a th:href="@{/cliente}" id="cancelar-update" class="link-cancelar">Cancelar</a>
-                                </div>
-
-                            </div>
-
-                            <div class="foto-upload">
-                                <label for="foto">
-                                    <img src="/img/icons/foto-cliente.svg" alt="campo para cadastrar foto do cliente"
-                                        id="preview-foto">
-                                </label>
-                                <input type="file" th:name="foto" id="foto" accept="image/*">
-                                <label for="foto" class="btn-foto">Selecione a imagem</label>
-                                <p>Extensão de arquivo: .JPEG, .PNG</p>
-                            </div>
-                        </div>
                 </div>
 
                 <div class="informacoes-delete">
@@ -168,14 +114,78 @@
                             pedidos e endereços serão permanentemente removidos.
                         </p>
                         <div class="btn-excluir">
-                            <form th:action="@{/excluir-cliente}" method="post" id="form-delete">
+                            <form th:action="@{/cliente/excluir-conta/{id}(id=${cliente.id})}" th:method="post"
+                                id="form-delete">
                                 <button type="submit" class="btn-deletar">Quero excluir minha conta</button>
                             </form>
                             <button type="button" class="cancelar-delete">Cancelar</button>
                         </div>
                     </div>
                 </div>
+
+                <div class="informacoes-update">
+                    <h3>Meu Perfil | Atualização</h3>
+                    <form th:action="@{/cliente/atualizar/{id}(id=${cliente.id})}" method="post"
+                        enctype="multipart/form-data">
+
+                        <div class="perfil-container">
+                            <div class="form-fields">
+                                <div class="form nome">
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" th:name="nome" th:value="${cliente.nome}" required />
+                                </div>
+
+                                <div class="form email">
+                                    <label for="email">Email:</label>
+                                    <input type="email" th:name="email" th:value="${cliente.email}" required />
+                                </div>
+
+                                <div class="form telefone">
+                                    <label for="telefone">Telefone:</label>
+                                    <input type="tel" th:name="telefone" th:value="${cliente.telefone}" required />
+                                </div>
+
+                                <div class="form dt-nascimento">
+                                    <label for="dtNascimento">Data de Nascimento:</label>
+                                    <input type="date" th:name="dtNascimento" th:value="${cliente.dtNascimento}"
+                                        required>
+                                </div>
+
+                                <div class="form cpf">
+                                    <label for="cpf">CPF:</label>
+                                    <input type="text" th:value="${cliente.cpf}" th:name="cpf" required />
+                                </div>
+
+                                <div class="form senha">
+                                    <label for="senha">Senha:</label>
+                                    <div class="senha-container">
+                                        <input type="password" id="senha" th:value="${cliente.senha}" th:name="senha"
+                                            required>
+                                        <img src="/img/icons/olho-fechado.svg" alt="exibir senha" id="toggle-senha">
+                                    </div>
+                                </div>
+
+                                <div class="btn-atualizar">
+                                    <button type="submit">Salvar alterações</button>
+                                    <a th:href="@{/cliente/{id}(id=${cliente.id})}" id="cancelar-update"
+                                        class="link-cancelar">Cancelar</a>
+                                </div>
+
+                            </div>
+
+                            <div class="foto-upload">
+                                <label for="foto">
+                                    <img th:src="@{${#strings.isEmpty(cliente.enderecoFoto)} ? '/img/icons/foto-cliente.svg' : ${cliente.enderecoFoto}}"
+                                        alt="foto do cliente" id="preview-foto">
+                                </label>
+                                <input type="file" th:name="foto" id="foto" accept="image/*">
+                                <label for="foto" class="btn-foto">Selecione a imagem</label>
+                                <p>Extensão de arquivo: .JPEG, .PNG</p>
+                            </div>
+                        </div>
+                </div>
             </div>
+
     </section>
 
     <footer class="rodape">
@@ -192,7 +202,7 @@
 
     </footer>
     <script src="/js/troca-icons.js"></script>
-    <script src="/js/cliente-toggle.js"></script>
+    <script src="/js/usuario-toggle.js"></script>
     <script src="/js/preview-foto.js"></script>
     <script src="/js/toggle-senha.js"></script>
 </body>

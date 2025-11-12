@@ -21,7 +21,7 @@ public class PedidoRepository {
     }
 
     public List<Pedido> findAll() {
-        String jpql = "SELECT p FROM Pedido";
+        String jpql = "SELECT p FROM Pedido p";
         return em.createQuery(jpql, Pedido.class).getResultList();
     }
 
