@@ -8,6 +8,7 @@ import com.projeto.Brasileiras.model.Cliente;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -19,7 +20,7 @@ public class ClienteRepository {
     @Transactional
     public void save(Cliente cliente) {
         em.persist(cliente);
-        
+
     }
 
     public List<Cliente> findAll() {
@@ -45,16 +46,19 @@ public class ClienteRepository {
         em.merge(cliente);
     }
 
+    public Cliente buscarPorEmailESenha(String email, String senha) {
 
+        try {
+            String sql = "SELECT * FROM pessoas WHERE email = :email AND senha = :senha";
 
-    /*public Cliente EmaileSenha(String email, String senha) {
-        String sql = "SELECT * FROM cliente WHERE email = :email AND senha = :senha";
-
-        Query query = em.createNativeQuery(sql, Cliente.class);
-        query.setParameter("email", email);
-        query.setParameter("senha", senha);
-        Cliente cliente = (Cliente) query.getSingleResult();
-        return cliente;
-    }*/
+            Query query = em.createNativeQuery(sql, Cliente.class);
+            query.setParameter("email", email);
+            query.setParameter("senha", senha);
+            Cliente cliente = (Cliente) query.getSingleResult();
+            return cliente;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 }

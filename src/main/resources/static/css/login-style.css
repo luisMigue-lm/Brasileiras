@@ -125,3 +125,7 @@ p {
 .cadastro p a:hover {
     text-decoration: underline;
 }
+
+.mensagem-erro{
+    color: red;
+}

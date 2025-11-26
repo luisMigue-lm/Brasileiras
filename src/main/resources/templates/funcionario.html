@@ -31,14 +31,21 @@
             </div>
 
             <div class="campo-usuario">
-                <a th:href="@{/cadastro-funcionario}">
-                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
-                    <p>Crie sua conta</p>
-                </a>
+                <div th:if="${session.clienteLogado == null}">
+                    <a th:href="@{/cadastro-cliente}">
+                        <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                        <p>Crie sua conta</p>
+                    </a>
 
-                <a th:href="@{/login}">
-                    <p>Entre</p>
-                </a>
+                    <a th:href="@{/login}">
+                        <p>Entre</p>
+                    </a>
+                </div>
+                <div th:if="${session.clienteLogado != null}" class="usuario-logado">
+                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                    <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+
+                </div>
 
             </div>
             <div class="carrinho">
@@ -183,8 +190,8 @@
                                 <div class="form senha">
                                     <label for="senha">Senha:</label>
                                     <div class="senha-container">
-                                        <input type="password" id="senha" th:value="${funcionario.senha}" th:name="senha"
-                                            required>
+                                        <input type="password" id="senha" th:value="${funcionario.senha}"
+                                            th:name="senha" required>
                                         <img src="/img/icons/olho-fechado.svg" alt="exibir senha" id="toggle-senha">
                                     </div>
                                 </div>

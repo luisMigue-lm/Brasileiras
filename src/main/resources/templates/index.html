@@ -31,14 +31,21 @@
             </div>
 
             <div class="campo-usuario">
-                <a th:href="@{/cadastro-cliente}">
-                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
-                    <p>Crie sua conta</p>
-                </a>
+                <div th:if="${session.clienteLogado == null}">
+                    <a th:href="@{/cadastro-cliente}">
+                        <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                        <p>Crie sua conta</p>
+                    </a>
 
-                <a th:href="@{/login}">
-                    <p>Entre</p>
-                </a>
+                    <a th:href="@{/login}">
+                        <p>Entre</p>
+                    </a>
+                </div>
+                <div th:if="${session.clienteLogado != null}" class="usuario-logado">
+                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                    <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+
+                </div>
 
             </div>
             <div class="carrinho">

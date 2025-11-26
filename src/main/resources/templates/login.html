@@ -25,6 +25,10 @@
             <div class="container">
                 <h1>Digite seu Email e sua senha para iniciar sua sessão</h1>
 
+                <div class="mensagem-erro" th:if="${erro}">
+                    <p th:text="${erro}"></p>
+                </div>
+
                 <div class="form email">
                     <label for="email">Email:</label>
                     <input type="email" id="email" th:name="email" required />
