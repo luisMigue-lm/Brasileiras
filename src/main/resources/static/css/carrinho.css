@@ -1,0 +1,132 @@
+.corpo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    background-color: #f8f8f8;
+}
+
+.informacoes {
+    width: 85%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 760px 360px;
+    gap: 30px;
+}
+
+.tabela-carrinho {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.tabela-carrinho th {
+    text-align: left;
+    padding: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.tabela-carrinho td {
+    padding: 18px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.tabela-carrinho td strong {
+    font-size: 17px;
+}
+
+.quantidade-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-qtd {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-qtd:hover {
+    background: #e4e4e4;
+}
+
+.btn-remover {
+    color: #af0909;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.resumo-compra {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+}
+
+.resumo-compra h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.total-final {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0b8a2d;
+    margin-top: 15px;
+    text-align: right;
+}
+
+.btn-fechar {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #0b8a2d;
+    color: white;
+    font-size: 16px;
+    border: none;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.btn-fechar:hover {
+    background-color: #0a7c28;
+}
+
+.btn-voltar {
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+    color: #0b8a2d;
+    font-weight: bold;
+}
+
+a{
+    color: #009b3a;
+    text-decoration: none;
+}

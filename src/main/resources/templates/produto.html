@@ -42,14 +42,16 @@
                     </a>
                 </div>
                 <div th:if="${session.clienteLogado != null}" class="usuario-logado">
-                    <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
-                    <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+                    <a th:href="@{/cliente/{id}(id=${session.clienteLogado.id})}">
+                        <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                        <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+                    </a>
 
                 </div>
 
             </div>
             <div class="carrinho">
-                <a href=""><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+                <a href="/carrinho"><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
             </div>
         </nav>
     </header>
@@ -92,7 +94,9 @@
                     </div>
 
                     <button class="btn btn-compra">Comprar</button>
-                    <button class="btn btn-carrinho">Adicionar ao carrinho</button>
+                    <a th:href="@{/carrinho/adicionar/{id}(id=${produto.id})}">
+                        <button class="btn btn-carrinho">Adicionar ao carrinho</button>
+                    </a>
                 </div>
             </div>
 

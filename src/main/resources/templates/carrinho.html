@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/svg" href="/img/logo/brasileiras-logo3.svg">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="stylesheet" href="/css/carrinho.css">
+    <title>Carrinho | Brasileiras</title>
+</head>
+
+<body>
+
+    <header class="header-nav">
+        <nav class="navegacao">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-tipo">
+                </a>
+            </div>
+
+            <div class="barra-pesquisa">
+                <form>
+                    <input type="text" placeholder="O que vamos procurar hoje?">
+                    <button><img src="/img/icons/lupa.svg" id="lupa"></button>
+                </form>
+            </div>
+
+            <div class="campo-usuario">
+                <div th:if="${session.clienteLogado == null}">
+                    <a th:href="@{/cadastro-cliente}">
+                        <img src="/img/icons/user.svg" id="user-img">
+                        <p>Crie sua conta</p>
+                    </a>
+                    <a th:href="@{/login}">
+                        <p>Entre</p>
+                    </a>
+                </div>
+
+                <div th:if="${session.clienteLogado != null}" class="usuario-logado">
+                    <a th:href="@{/cliente/{id}(id=${session.clienteLogado.id})}">
+                        <img src="/img/icons/user.svg" id="user-img">
+                        <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carrinho">
+                <a th:href="@{/carrinho}">
+                    <img src="/img/icons/carrinho.svg" id="carrinho">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="corpo">
+
+        <div class="informacoes">
+            <div th:if="${session.clienteLogado == null}">
+                <h2>Para acessar o carrinho, é preciso estar logado</h2>
+                <a th:href="@{/cadastro-cliente}">
+                    <span>Crie sua conta</span>
+                </a>
+                <span>ou</span>
+                <a th:href="@{/login}">
+                    <span>Entre</span>
+                </a>
+            </div>
+
+            <div th:if="${session.clienteLogado != null}" class="col-esquerda">
+
+                <h2>Meu Carrinho</h2>
+
+                <div th:if="${#lists.isEmpty(carrinho)}">
+                    <p>Seu carrinho está vazio</p>
+                    <a th:href="@{/}" class="btn">Voltar às compras</a>
+                </div>
+
+                <div th:if="${!#lists.isEmpty(carrinho)}">
+
+                    <table class="tabela-carrinho">
+
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                            <th>Subtotal</th>
+                            <th>Ações</th>
+                        </tr>
+
+                            <tr th:each="item : ${carrinho}">
+                                <td><strong th:text="${item.produto.nome}"></strong></td>
+
+                                <td>
+                                    <div class="quantidade-box">
+                                        <a th:href="@{/carrinho/diminuir/{id}(id=${item.produto.id})}"
+                                            class="btn-qtd">-</a>
+                                        <span th:text="${item.quantidade}"></span>
+                                        <a th:href="@{/carrinho/aumentar/{id}(id=${item.produto.id})}"
+                                            class="btn-qtd">+</a>
+                                    </div>
+                                </td>
+
+                                <td>R$ <span th:text="${item.produto.preco}"></span></td>
+
+                                <td>R$ <span th:text="${item.subtotal}"></span></td>
+
+                                <td>
+                                    <a th:href="@{/carrinho/remove/{id}(id=${item.produto.id})}" class="btn-remover">
+                                        Remover
+                                    </a>
+                                </td>
+                            </tr>
+                    </table>
+
+                    <hr>
+
+                    <div class="total">
+                        <h3>Total: R$ <span th:text="${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}"></span>
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+
+            <div th:if="${!#lists.isEmpty(carrinho)}">
+
+                <div class="resumo-compra">
+                    <h2>Resumo da compra</h2>
+
+                    <div class="resumo-linha">
+                        <span>Total dos produtos:</span>
+                        <span>R$ <span th:text="${total}"></span></span>
+                    </div>
+
+                    <div class="resumo-linha">
+                        <span>Total do frete:</span>
+                        <span>R$10.00</span>
+                    </div>
+
+                    <div class="total-final">
+                        Total: R$ <span th:text="${total + 10}"></span>
+                    </div>
+
+                    <a th:href="@{/fechar}" class="btn-fechar">Fechar pedido</a>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="rodape">
+        <div class="logo-footer">
+            <a th:href="@{/}">
+                <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-rodape">
+            </a>
+        </div>
+
+        <div class="texto-footer">
+            <p><a th:href="@{/}">Voltar ao Início</a></p>
+            <p>© 2025 Brasileiras.com</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
