@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/svg" href="/img/logo/brasileiras-logo3.svg">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="stylesheet" href="/css/index-style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Endereços | Brasileiras</title>
+</head>
+
+<body>
+
+    <header class="header-nav">
+
+        <nav class="navegacao">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-tipo">
+                </a>
+            </div>
+
+            <div class="barra-pesquisa">
+                <form method="post" action="">
+                    <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
+
+                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa"></button>
+                </form>
+            </div>
+
+            <div class="campo-usuario">
+                <div th:if="${session.clienteLogado == null}">
+                    <a th:href="@{/cadastro-cliente}">
+                        <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                        <p>Crie sua conta</p>
+                    </a>
+
+                    <a th:href="@{/login}">
+                        <p>Entre</p>
+                    </a>
+                </div>
+                <div th:if="${session.clienteLogado != null}" class="usuario-logado">
+                    <a th:href="@{/cliente/{id}(id=${session.clienteLogado.id})}">
+                        <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                        <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="carrinho">
+                <a href="/carrinho"><img src="/img/icons/carrinho.svg" alt="carrinho de compras" id="carrinho"></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-cadastro">
+        <h1>Cadastrar Endereço</h1>
+
+        <form th:action="@{/endereco/salvar}" method="post" class="form-cadastro">
+
+            <div class="grupo-input">
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+            </div>
+
+            <div class="grupo-input">
+                <label for="rua">Rua</label>
+                <input type="text" id="rua" name="rua" placeholder="Nome da rua" required>
+            </div>
+
+            <div class="grupo-linha">
+                <div class="grupo-input">
+                    <label for="numResidencial">Número</label>
+                    <input type="number" id="numResidencial" name="numResidencial" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento" placeholder="Apto, bloco...">
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" name="bairro" required>
+            </div>
+
+            <div class="grupo-linha">
+                <div class="grupo-input">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" required>
+                        <option value="">Escolha...</option>
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AP</option>
+                        <option>AM</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MT</option>
+                        <option>MS</option>
+                        <option>MG</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PR</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RS</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>SC</option>
+                        <option>SP</option>
+                        <option>SE</option>
+                        <option>TO</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn-enviar" type="submit">Salvar Endereço</button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

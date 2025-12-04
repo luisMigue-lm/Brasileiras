@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "enderecos")
 public class Endereco {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,7 +45,28 @@ public class Endereco {
     @JsonIgnore
     private Cliente cliente;
 
-     public Endereco(Long id, String cep, String rua, int numResidencial, String complemento, String bairro,
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    @JsonIgnore
+    private Funcionario funcionario;
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Endereco(Long id, String cep, String rua, int numResidencial, String complemento, String bairro,
             String cidade, String estado, Cliente cliente) {
         this.id = id;
         this.cep = cep;
@@ -58,7 +79,8 @@ public class Endereco {
         this.cliente = cliente;
     }
 
-    public Endereco() {}
+    public Endereco() {
+    }
 
     public Long getId() {
         return id;

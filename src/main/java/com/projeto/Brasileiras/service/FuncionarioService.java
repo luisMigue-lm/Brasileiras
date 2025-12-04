@@ -12,8 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FuncionarioService {
-    //public static final String enderecoArmazenamentoArquivo = "C:/IFerno/3º Ano/Web/Brasileiras/src/main/resources/static/img/fotos/funcionarios";
-    public static final String enderecoArmazenamentoArquivo = "C:/Users/3028887/Documents/Brasileiras/src/main/resources/static/img/fotos/funcionarios";
+    //public static final String enderecoArmazenamentoArquivo = "C:/Users/3028887/Documents/Brasileiras/src/main/resources/static/img/fotos/funcionarios"; Escola
+    //public static final String enderecoArmazenamentoArquivo = "C:/IFerno/3º Ano/Web/Brasileiras/src/main/resources/static/img/fotos/funcionarios"; Luis Miguel
+    //public static final String enderecoArmazenamentoArquivo = "D:/Escola/3° Ano/Fundamentos para Web - Aplicações para Web/3° Bimestre/Projeto/Brasileiras-1/src/main/resources/static/img/fotos/funcionarios"; Guilherme
+    public static final String enderecoArmazenamentoArquivo = "D:/Escola/3° Ano/Fundamentos para Web - Aplicações para Web/3° Bimestre/Projeto/Brasileiras-1/src/main/resources/static/img/fotos/funcionarios";
 
     public String salvarFoto(MultipartFile arquivo) throws IOException {
         if (arquivo == null || arquivo.isEmpty()) {

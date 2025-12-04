@@ -1,6 +1,7 @@
 package com.projeto.Brasileiras.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,74 +41,88 @@ public class ProdutoController {
             @RequestParam String nome, @RequestParam String descricao, @RequestParam String produtor,
             @RequestParam double preco, @RequestParam int quantd, @RequestParam LocalDate dtValidade) {
 
-                try {
-                    Produto produto = new Produto();
+        try {
+            Produto produto = new Produto();
 
-                    produto.setNome(nome);
-                    produto.setCategoria(categoria);
-                    produto.setDescricao(descricao);
-                    produto.setProdutor(produtor);
-                    produto.setPreco(preco);
-                    produto.setQuantidade(quantd);
-                    produto.setDtValidade(dtValidade);
+            produto.setNome(nome);
+            produto.setCategoria(categoria);
+            produto.setDescricao(descricao);
+            produto.setProdutor(produtor);
+            produto.setPreco(preco);
+            produto.setQuantidade(quantd);
+            produto.setDtValidade(dtValidade);
 
-                    if (!foto.isEmpty()) {
-                        String caminhoSalvo = produtoService.salvarFoto(foto);
-                        produto.setCaminhoFoto(caminhoSalvo);
-                    }
-                    produtoRepository.save(produto);
+            if (!foto.isEmpty()) {
+                String caminhoSalvo = produtoService.salvarFoto(foto);
+                produto.setCaminhoFoto(caminhoSalvo);
+            }
+            produtoRepository.save(produto);
 
-                    return "redirect:/lista-cruds";
-                } catch (Exception e) {
-                    return "Erro: " + e.getMessage();
-                }
+            return "redirect:/lista-cruds";
+        } catch (Exception e) {
+            return "Erro: " + e.getMessage();
+        }
     }
 
     @GetMapping("/produto/editar/{id}")
     public String editarProduto(@PathVariable Long id, Model model) {
         Produto produto = produtoRepository.findById(id);
         model.addAttribute("produto", produto);
-        
+
         return "atualizar-produto";
     }
-    
 
     @PostMapping("/produto/atualizar/{id}")
-    public String updateProduto(@PathVariable Long id, @RequestParam("foto") MultipartFile foto, @RequestParam String categoria,
+    public String updateProduto(@PathVariable Long id, @RequestParam("foto") MultipartFile foto,
+            @RequestParam String categoria,
             @RequestParam String nome, @RequestParam String descricao, @RequestParam String produtor,
             @RequestParam double preco, @RequestParam int quantd, @RequestParam LocalDate dtValidade) {
-                try {
-                    Produto produto = produtoRepository.findById(id);
+        try {
+            Produto produto = produtoRepository.findById(id);
 
-                    produto.setNome(nome);
-                    produto.setCategoria(categoria);
-                    produto.setDescricao(descricao);
-                    produto.setProdutor(produtor);
-                    produto.setPreco(preco);
-                    produto.setQuantidade(quantd);
-                    produto.setDtValidade(dtValidade);
+            produto.setNome(nome);
+            produto.setCategoria(categoria);
+            produto.setDescricao(descricao);
+            produto.setProdutor(produtor);
+            produto.setPreco(preco);
+            produto.setQuantidade(quantd);
+            produto.setDtValidade(dtValidade);
 
-                    if (!foto.isEmpty()) {
-                        String caminhoSalvo = produtoService.salvarFoto(foto);
-                        produto.setCaminhoFoto(caminhoSalvo);
-                    }
-                    produtoRepository.update(produto);;
+            if (!foto.isEmpty()) {
+                String caminhoSalvo = produtoService.salvarFoto(foto);
+                produto.setCaminhoFoto(caminhoSalvo);
+            }
+            produtoRepository.update(produto);
+            ;
 
-                    return "redirect:/lista-cruds";
-                } catch (Exception e) {
-                    return "Erro: " + e.getMessage();
-                }
+            return "redirect:/lista-cruds";
+        } catch (Exception e) {
+            return "Erro: " + e.getMessage();
+        }
     }
 
     @PostMapping("/produto/excluir/{id}")
     public String postMethodName(@PathVariable Long id) {
         produtoRepository.deleteById(id);
-        
+
         return "redirect:/lista-cruds";
     }
 
+    @GetMapping("/pesquisa")
+    public String pesquisar(@RequestParam String nome, Model model) {
+        List<Produto> produtos = produtoRepository.findByNome(nome);
+        model.addAttribute("produtos", produtos);
+        return "pesquisa";
+    }
 
-    
-    
+    @GetMapping("/pesquisa/{categoria}")
+    public String produtosPorCategoria(@PathVariable String categoria, Model model) {
+
+        List<Produto> produtos = produtoRepository.findByCategoria(categoria);
+        model.addAttribute("produtos", produtos);
+        model.addAttribute("categoria", categoria);
+
+        return "pesquisa";
+    }
 
 }

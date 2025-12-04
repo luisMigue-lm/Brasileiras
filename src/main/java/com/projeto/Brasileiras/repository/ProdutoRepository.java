@@ -42,4 +42,19 @@ public class ProdutoRepository {
     public void update(Produto produto) {
         em.merge(produto);
     }
+
+    public List<Produto> findByNome(String nome) {
+        String jpql = "SELECT p FROM Produto p WHERE p.nome LIKE :nome";
+        return em.createQuery(jpql, Produto.class)
+                .setParameter("nome", "%" + nome + "%")
+                .getResultList();
+    }
+
+    public List<Produto> findByCategoria(String categoria) {
+        String jpql = "SELECT p FROM Produto p WHERE p.categoria = :categoria";
+        return em.createQuery(jpql, Produto.class)
+                .setParameter("categoria", categoria)
+                .getResultList();
+    }
+
 }

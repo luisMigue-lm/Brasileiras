@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/svg" href="/img/logo/brasileiras-logo3.svg">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="stylesheet" href="/css/pesquisa.css">
+    <title>Pesquisa | Brasileiras</title>
+</head>
+
+<body>
+
+    <header class="header-nav">
+        <nav class="navegacao">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img src="/img/logo/brasileiras-logo2.svg" alt="Brasileiras - logotipo" id="logo-tipo">
+                </a>
+            </div>
+
+            <div class="barra-pesquisa">
+                <form method="get" action="/pesquisa">
+                    <input type="text" name="nome" placeholder="O que vamos procurar hoje?">
+                    <button type="submit">
+                        <img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa">
+                    </button>
+                </form>
+
+            </div>
+
+            <div class="campo-usuario">
+                <div th:if="${session.clienteLogado == null}">
+                    <a th:href="@{/cadastro-cliente}">
+                        <img src="/img/icons/user.svg" id="user-img">
+                        <p>Crie sua conta</p>
+                    </a>
+                    <a th:href="@{/login}">
+                        <p>Entre</p>
+                    </a>
+                </div>
+
+                <div th:if="${session.clienteLogado != null}" class="usuario-logado">
+                    <a th:href="@{/cliente/{id}(id=${session.clienteLogado.id})}">
+                        <img src="/img/icons/user.svg" id="user-img">
+                        <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carrinho">
+                <a th:href="@{/carrinho}">
+                    <img src="/img/icons/carrinho.svg" id="carrinho">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="resultados">
+        <h1>Resultados da pesquisa</h1>
+
+        <div class="pesquisa">
+
+            <aside class="filtro">
+                <h3>Preço</h3>
+
+                <div class="preco">
+                    <input type="number" placeholder="Mínimo">
+                    <span>–</span>
+                    <input type="number" placeholder="Máximo">
+                </div>
+
+                <h3>Filtro</h3>
+
+                <label><input type="radio" name="filtro"> Origem animal</label>
+                <label><input type="radio" name="filtro"> Vegetais</label>
+                <label><input type="radio" name="filtro"> Tubérculos</label>
+                <label><input type="radio" name="filtro"> Frutas</label>
+                <label><input type="radio" name="filtro"> Artesanatos</label>
+
+                <button class="botao-aplicar">Aplicar</button>
+            </aside>
+
+            <div class="produtos">
+
+                <div class="card-produto" th:each="produto : ${produtos}">
+                    <a th:href="@{/produto/{id}(id=${produto.id})}">
+                        <img th:src="@{${produto.caminhoFoto}}" alt="Imagem do produto">
+                        <h4 th:text="${produto.nome}"></h4>
+                        <p class="preco-produto" th:text="'R$' + ${#numbers.formatDecimal(produto.preco, 1, 2)}"></p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

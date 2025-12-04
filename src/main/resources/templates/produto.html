@@ -23,11 +23,13 @@
             </div>
 
             <div class="barra-pesquisa">
-                <form method="post" action="">
-                    <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
-
-                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa"></button>
+                <form method="get" action="/pesquisa">
+                    <input type="text" name="nome" placeholder="O que vamos procurar hoje?">
+                    <button type="submit">
+                        <img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa">
+                    </button>
                 </form>
+
             </div>
 
             <div class="campo-usuario">

@@ -1,0 +1,105 @@
+.resultados {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.resultados h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.pesquisa {
+    display: flex;
+    gap: 40px;
+}
+
+.filtro {
+    width: 220px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.filtro h3 {
+    margin: 20px 0 10px;
+}
+
+.preco {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.preco input {
+    width: 70px;
+    padding: 5px;
+}
+
+.filtro label {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    gap: 8px;
+}
+
+.botao-aplicar {
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px;
+    border: none;
+    background: #019B48;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.produtos {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 2%;
+}
+
+.card-produto {
+    flex-basis: 200px;
+    flex-grow: 1;
+    padding: 2%;
+    border: 1px solid #D9D9D9;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 125px;
+    margin-bottom: 1rem;
+}
+
+.card-produto a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.1rem;
+    height: 100%;
+    text-decoration: none;
+    color: #000000;
+}
+
+.card-produto img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.card-produto h4 {
+    font-size: 1rem;
+    margin: 0;
+    min-height: 40px;
+}
+
+.card-produto .preco-produto {
+    color: #009440;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 1%;
+    font-size: 1.5rem;
+}

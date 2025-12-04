@@ -23,11 +23,13 @@
             </div>
 
             <div class="barra-pesquisa">
-                <form method="post" action="">
-                    <input type="text" name="barra-pesquisa" placeholder="O que vamos procurar hoje?">
-
-                    <button type="submit"><img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa"></button>
+                <form method="get" action="/pesquisa">
+                    <input type="text" name="nome" placeholder="O que vamos procurar hoje?">
+                    <button type="submit">
+                        <img src="/img/icons/lupa.svg" alt="lupa de pesquisa" id="lupa">
+                    </button>
                 </form>
+
             </div>
 
             <div class="campo-usuario">
@@ -42,11 +44,11 @@
                     </a>
                 </div>
                 <div th:if="${session.clienteLogado != null}" class="usuario-logado">
-                    <a th:href="@{/funcionario/{id}(id=${session.clienteLogado.id})}">
-                        <a th:href="@{/cliente/{id}(id=${session.clienteLogado.id})}">
-                        <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
-                        <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
-                    </a>
+                    <a th:href="@{/cliente/{id}(id=${session.clienteLogado.id})}">
+                        <a th:href="@{/funcionario/{id}(id=${session.clienteLogado.id})}">
+                            <img src="/img/icons/user.svg" alt="ícone de usuário" id="user-img">
+                            <p>Olá, <span th:text="${session.clienteLogado.nome}"></span></p>
+                        </a>
 
                 </div>
 
@@ -57,34 +59,34 @@
         </nav>
 
         <div class="menu-opcoes">
-            <div class="endereco">
-                <a href="">
+            <a href="">
+                <div class="endereco">
                     <img src="/img/icons/local.svg" alt="ponto de localização" id="icon-loclz">
 
                     <p>Informe o seu CEP</p>
 
-                </a>
-            </div>
-            <ul>
-                <li>
-                    <a th:href="@{/}">Origem Animal</a>
-                </li>
-                <li>
-                    <a th:href="@{/}">Vegetais</a>
-                </li>
-                <li>
-                    <a th:href="@{/}">Tubercúlos</a>
-                </li>
-                <li>
-                    <a th:href="@{/}">Frutas</a>
-                </li>
-                <li>
-                    <a th:href="@{/}">Artesanatos</a>
-                </li>
-                <li>
-                    <a th:href="@{/lista-cruds}">Sobre nós</a>
-                </li>
-            </ul>
+            </a>
+        </div>
+        <ul>
+            <li>
+                <a th:href="@{/pesquisa/{categoria}(categoria='animal')}">Origem Animal</a>
+            </li>
+            <li>
+                <a th:href="@{/pesquisa/{categoria}(categoria='vegetal')}">Vegetais</a>
+            </li>
+            <li>
+                <a th:href="@{/pesquisa/{categoria}(categoria='tuberculo')}">Tubercúlos</a>
+            </li>
+            <li>
+                <a th:href="@{/pesquisa/{categoria}(categoria='fruta')}">Frutas</a>
+            </li>
+            <li>
+                <a th:href="@{/pesquisa/{categoria}(categoria='artesanato')}">Artesanatos</a>
+            </li>
+            <li>
+                <a th:href="@{/lista-cruds}">Sobre nós</a>
+            </li>
+        </ul>
         </div>
     </header>
 
@@ -95,36 +97,15 @@
                 <div class="produto destaques">
                     <a th:href="@{/produto/{id}(id=${1})}">
                         <img src="/img/fotos/produtos/placeholder.jpg" alt="">
-                        <p>Quijo Minas de leite comum 500g</p>
+                        <p>Queijo Minas de leite comum 500g</p>
                         <p>R$20,00</p>
                     </a>
                 </div>
-                <div class="produto destaques">
-                    <a href="">
-                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
-                        <p>Quijo Minas de leite comum 500g</p>
-                        <p>R$20,00</p>
-                    </a>
-                </div>
-                <div class="produto destaques">
-                    <a href="">
-                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
-                        <p>Quijo Minas de leite comum 500g</p>
-                        <p>R$20,00</p>
-                    </a>
-                </div>
-                <div class="produto destaques">
-                    <a href="">
-                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
-                        <p>Quijo Minas de leite comum 500g</p>
-                        <p>R$20,00</p>
-                    </a>
-                </div>
-                <div class="produto destaques">
-                    <a href="">
-                        <img src="/img/fotos/produtos/placeholder.jpg" alt="">
-                        <p>Quijo Minas de leite comum 500g</p>
-                        <p>R$20,00</p>
+                <div class="produto destaques" th:each="produto : ${produtos}">
+                    <a th:href="@{/produto/{id}(id=${produto.id})}">
+                        <img th:src="@{${produto.caminhoFoto}}" alt="Imagem do produto">
+                        <h4 th:text="${produto.nome}"></h4>
+                        <p class="preco-produto" th:text="'R$' + ${#numbers.formatDecimal(produto.preco, 1, 2)}"></p>
                     </a>
                 </div>
 

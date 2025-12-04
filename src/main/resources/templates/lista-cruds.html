@@ -59,50 +59,7 @@
     <div class="tabelas">
         <table>
             <tr>
-                <th>Clientes</th>
-                <th><a th:href="@{/cadastro-cliente}">Adicionar</a></th>
-            </tr>
-            <tr>
-                <th>Foto</th>
-                <th>Nome</th>
-                <th>Detalhes</th>
-
-            </tr>
-            <tr th:each="cliente : ${clientes}">
-                <td>
-                    <img th:src="@{${cliente.enderecoFoto}}" alt="foto" width="100" height="100">
-                </td>
-                <td>[[${cliente.nome}]]</td>
-                <td><a th:href="@{/cliente/{id}(id=${cliente.id})}">Clique aqui!</a></td>
-
-            </tr>
-        </table>
-
-        <table>
-            <tr>
-                <th>Funcionários</th>
-                <th><a th:href="@{cadastro-funcionario}">Adicionar</a></th>
-            </tr>
-            <tr>
-                <th>Foto</th>
-                <th>Nome</th>
-                <th>Detalhes</th>
-
-            </tr>
-            <tr th:each="funcionario : ${funcionarios}">
-                <td>
-                    <img th:src="@{${funcionario.enderecoFoto}}" alt="foto" width="100" height="100">
-                </td>
-                <td>[[${funcionario.nome}]]</td>
-                <td><a th:href="@{/funcionario/{id}(id=${funcionario.id})}">Clique aqui!</a></td>
-
-            </tr>
-        </table>
-
-        <table>
-            <tr>
                 <th>Produtos</th>
-                <th><a th:href="@{/cadastro-produto}">Adicionar</a></th>
             </tr>
             <tr>
                 <th>Foto</th>
